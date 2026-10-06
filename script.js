@@ -233,6 +233,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initSpotlightLighting();
   initKDTreePlayground();
   initCommandPalette();
+  initSiliconDieVisualizer();
+  initOrderBookSimulator();
 });
 
 // Lightweight Interactive Particle Canvas Engine
@@ -360,6 +362,7 @@ function initSpotlightLighting() {
 const CMD_ITEMS = [
   { id: 'jump-systems', title: 'Flagship Systems Architecture', desc: 'Aero Linux, Vectra Core, Bharat Spatial, Apex', icon: '⚡', group: 'Navigation', badge: 'Jump', action: () => scrollToSection('systems') },
   { id: 'jump-kdtree', title: 'KD-Tree Spatial Simulator', desc: 'Live in-browser coordinate search playground', icon: '🗺️', group: 'Navigation', badge: 'Jump', action: () => scrollToSection('kdtree-canvas') },
+  { id: 'jump-orderbook', title: 'Apex L2 Order Book Engine', desc: 'Live continuous double auction depth ladder simulator', icon: '📈', group: 'Navigation', badge: 'Jump', action: () => scrollToSection('ob-spread-info') },
   { id: 'jump-terminal', title: 'Interactive Systems Terminal', desc: 'Live terminal REPL simulator', icon: '⌨️', group: 'Navigation', badge: 'Jump', action: () => scrollToSection('terminal') },
   { id: 'jump-arsenal', title: 'Technical Arsenal & Stack', desc: 'C, Java 21 Loom, Spring Boot, Linux internals', icon: '🛠️', group: 'Navigation', badge: 'Jump', action: () => scrollToSection('arsenal') },
   { id: 'jump-about', title: 'Workstation & Philosophy', desc: 'AMD Ryzen 5600H, Aero Linux specs', icon: '💻', group: 'Navigation', badge: 'Jump', action: () => scrollToSection('about') },
@@ -772,4 +775,278 @@ function renderKDTreeCanvas() {
     ctx.beginPath(); ctx.moveTo(cx, cy - 8); ctx.lineTo(cx + 8, cy); ctx.stroke();
     ctx.beginPath(); ctx.arc(cx, cy, 3, 0, Math.PI * 2); ctx.stroke();
   }
+}
+
+// ─────────────────────────────────────────────────────────────
+// ⚡ Silicon Hardware Die Visualizer Engine (AMD Zen 3 Core Die)
+// ─────────────────────────────────────────────────────────────
+let siliconCanvas = null;
+let siliconCtx = null;
+let siliconMouse = { x: -9999, y: -9999, activeCore: -1 };
+let siliconPackets = [];
+
+function initSiliconDieVisualizer() {
+  siliconCanvas = document.getElementById('silicon-canvas');
+  if (!siliconCanvas) return;
+  siliconCtx = siliconCanvas.getContext('2d');
+
+  function resize() {
+    const rect = siliconCanvas.getBoundingClientRect();
+    siliconCanvas.width = rect.width;
+    siliconCanvas.height = 250;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // Create initial packet streams
+  for (let i = 0; i < 20; i++) {
+    siliconPackets.push({
+      progress: Math.random(),
+      speed: 0.006 + Math.random() * 0.008,
+      lane: Math.floor(Math.random() * 6),
+      color: Math.random() > 0.4 ? '#00f2fe' : '#38bdf8'
+    });
+  }
+
+  siliconCanvas.addEventListener('mousemove', (e) => {
+    const rect = siliconCanvas.getBoundingClientRect();
+    siliconMouse.x = e.clientX - rect.left;
+    siliconMouse.y = e.clientY - rect.top;
+  });
+
+  siliconCanvas.addEventListener('mouseleave', () => {
+    siliconMouse.x = -9999;
+    siliconMouse.y = -9999;
+    siliconMouse.activeCore = -1;
+  });
+
+  function renderDie() {
+    if (!siliconCanvas || !siliconCtx) return;
+    const ctx = siliconCtx;
+    const W = siliconCanvas.width;
+    const H = siliconCanvas.height;
+
+    ctx.clearRect(0, 0, W, H);
+
+    // Silicon Substrate outline
+    const margin = 14;
+    const dieW = W - margin * 2;
+    const dieH = H - margin * 2;
+
+    ctx.fillStyle = '#05070c';
+    ctx.fillRect(margin, margin, dieW, dieH);
+    ctx.strokeStyle = 'rgba(0, 242, 254, 0.22)';
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(margin, margin, dieW, dieH);
+
+    // Central L3 Cache Bus
+    const l3H = 34;
+    const l3Y = margin + (dieH - l3H) / 2;
+    ctx.fillStyle = 'rgba(16, 185, 129, 0.08)';
+    ctx.fillRect(margin + 10, l3Y, dieW - 20, l3H);
+    ctx.strokeStyle = 'rgba(16, 185, 129, 0.35)';
+    ctx.strokeRect(margin + 10, l3Y, dieW - 20, l3H);
+
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.fillStyle = '#34d399';
+    ctx.textAlign = 'center';
+    ctx.fillText('32MB UNIFIED L3 CACHE • HIGH-BANDWIDTH FABRIC', margin + dieW / 2, l3Y + 21);
+
+    // Cores layout: 3 cores top row, 3 cores bottom row (6 Cores Zen 3)
+    const coreRows = 2;
+    const coreCols = 3;
+    const coreGap = 12;
+    const coreW = (dieW - 20 - (coreCols - 1) * coreGap) / coreCols;
+    const coreH = (dieH - l3H - 36) / 2;
+
+    siliconMouse.activeCore = -1;
+
+    for (let r = 0; r < coreRows; r++) {
+      for (let c = 0; c < coreCols; c++) {
+        const coreIdx = r * coreCols + c;
+        const cx = margin + 10 + c * (coreW + coreGap);
+        const cy = r === 0 ? margin + 8 : l3Y + l3H + 10;
+
+        // Check hover
+        const isHovered = siliconMouse.x >= cx && siliconMouse.x <= cx + coreW &&
+                          siliconMouse.y >= cy && siliconMouse.y <= cy + coreH;
+
+        if (isHovered) {
+          siliconMouse.activeCore = coreIdx;
+        }
+
+        // Draw Core background
+        ctx.fillStyle = isHovered ? 'rgba(0, 242, 254, 0.16)' : 'rgba(13, 16, 26, 0.7)';
+        ctx.fillRect(cx, cy, coreW, coreH);
+        ctx.strokeStyle = isHovered ? '#00f2fe' : 'rgba(255, 255, 255, 0.1)';
+        ctx.lineWidth = isHovered ? 1.5 : 1;
+        ctx.strokeRect(cx, cy, coreW, coreH);
+
+        // Core label & virtual thread lanes
+        ctx.fillStyle = isHovered ? '#00f2fe' : '#e2e8f0';
+        ctx.textAlign = 'left';
+        ctx.fillText(`CORE ${coreIdx} (T${coreIdx * 2}, T${coreIdx * 2 + 1})`, cx + 8, cy + 18);
+
+        // Micro pipeline lanes inside core
+        const laneY = cy + 28;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+        ctx.beginPath();
+        ctx.moveTo(cx + 8, laneY);
+        ctx.lineTo(cx + coreW - 8, laneY);
+        ctx.moveTo(cx + 8, laneY + 14);
+        ctx.lineTo(cx + coreW - 8, laneY + 14);
+        ctx.stroke();
+
+        ctx.fillStyle = '#64748b';
+        ctx.font = '8px "JetBrains Mono", monospace';
+        ctx.fillText('L2 CACHE (512KB)', cx + 8, cy + coreH - 8);
+      }
+    }
+
+    // Packet Streams (Fabric traffic)
+    siliconPackets.forEach(pkt => {
+      pkt.progress += pkt.speed * (siliconMouse.activeCore !== -1 ? 1.8 : 1);
+      if (pkt.progress > 1) {
+        pkt.progress = 0;
+        pkt.lane = Math.floor(Math.random() * 6);
+      }
+
+      const laneCol = pkt.lane % 3;
+      const isTop = pkt.lane < 3;
+      const xStart = margin + 10 + laneCol * (coreW + coreGap) + coreW / 2;
+      const yStart = isTop ? margin + coreH + 8 : l3Y + l3H + 10;
+      const yEnd = isTop ? l3Y : l3Y + l3H;
+      const curY = isTop ? yStart + (yEnd - yStart) * pkt.progress : yStart - (yStart - yEnd) * pkt.progress;
+
+      ctx.beginPath();
+      ctx.arc(xStart, curY, 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = pkt.color;
+      ctx.shadowColor = pkt.color;
+      ctx.shadowBlur = 6;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    });
+
+    requestAnimationFrame(renderDie);
+  }
+
+  requestAnimationFrame(renderDie);
+}
+
+// ─────────────────────────────────────────────────────────────
+// ⚡ Level 2 (L2) Continuous Double Auction Simulator (Apex Engine)
+// ─────────────────────────────────────────────────────────────
+const OB_STATE = {
+  asks: [
+    { price: 100.45, size: 840 },
+    { price: 100.40, size: 620 },
+    { price: 100.35, size: 450 },
+    { price: 100.30, size: 310 },
+    { price: 100.25, size: 180 }
+  ],
+  bids: [
+    { price: 100.20, size: 220 },
+    { price: 100.15, size: 380 },
+    { price: 100.10, size: 510 },
+    { price: 100.05, size: 730 },
+    { price: 100.00, size: 950 }
+  ],
+  totalMatches: 0
+};
+
+function initOrderBookSimulator() {
+  renderOrderBook();
+}
+
+function renderOrderBook() {
+  const asksEl = document.getElementById('ob-asks');
+  const bidsEl = document.getElementById('ob-bids');
+  if (!asksEl || !bidsEl) return;
+
+  const maxSize = Math.max(
+    ...OB_STATE.asks.map(a => a.size),
+    ...OB_STATE.bids.map(b => b.size)
+  ) || 1000;
+
+  let asksHtml = '';
+  OB_STATE.asks.forEach(a => {
+    const widthPct = Math.min(100, Math.round((a.size / maxSize) * 100));
+    asksHtml += `
+      <div class="ob-row">
+        <span style="color:#ef4444; font-weight:700;">$${a.price.toFixed(2)}</span>
+        <span style="color:#f8fafc;">${a.size}</span>
+        <span style="color:#94a3b8; font-size:0.7rem;">${widthPct}%</span>
+        <div class="ob-bar-bg ob-bar-ask" style="width: ${widthPct}%;"></div>
+      </div>
+    `;
+  });
+  asksEl.innerHTML = asksHtml;
+
+  let bidsHtml = '';
+  OB_STATE.bids.forEach(b => {
+    const widthPct = Math.min(100, Math.round((b.size / maxSize) * 100));
+    bidsHtml += `
+      <div class="ob-row">
+        <span style="color:#10b981; font-weight:700;">$${b.price.toFixed(2)}</span>
+        <span style="color:#f8fafc;">${b.size}</span>
+        <span style="color:#94a3b8; font-size:0.7rem;">${widthPct}%</span>
+        <div class="ob-bar-bg ob-bar-bid" style="width: ${widthPct}%;"></div>
+      </div>
+    `;
+  });
+  bidsEl.innerHTML = bidsHtml;
+
+  const bestAsk = OB_STATE.asks[OB_STATE.asks.length - 1]?.price || 100.25;
+  const bestBid = OB_STATE.bids[0]?.price || 100.20;
+  const spread = (bestAsk - bestBid).toFixed(2);
+  const mid = ((bestAsk + bestBid) / 2).toFixed(3);
+  const spreadEl = document.getElementById('ob-spread-info');
+  if (spreadEl) {
+    spreadEl.innerHTML = `SPREAD: $${spread} • MID: $${mid} • 50,000+ OPS/SEC FIFO MATCHING`;
+  }
+}
+
+function injectOrder(side) {
+  const t0 = performance.now();
+  let fillPrice = 100.25;
+  let fillQty = Math.floor(Math.random() * 60) + 40;
+
+  if (side === 'BUY') {
+    const bestAsk = OB_STATE.asks[OB_STATE.asks.length - 1];
+    if (bestAsk) {
+      fillPrice = bestAsk.price;
+      bestAsk.size = Math.max(20, bestAsk.size - fillQty);
+    }
+  } else {
+    const bestBid = OB_STATE.bids[0];
+    if (bestBid) {
+      fillPrice = bestBid.price;
+      bestBid.size = Math.max(20, bestBid.size - fillQty);
+    }
+  }
+
+  const t1 = performance.now();
+  const latency = (t1 - t0).toFixed(3);
+
+  OB_STATE.totalMatches++;
+  const matchCountEl = document.getElementById('ob-match-count');
+  if (matchCountEl) matchCountEl.textContent = `${OB_STATE.totalMatches} Matches`;
+
+  const feedList = document.getElementById('ob-feed-list');
+  if (feedList) {
+    const row = document.createElement('div');
+    row.className = 'ob-trade-row';
+    const sideColor = side === 'BUY' ? '#10b981' : '#ef4444';
+    row.innerHTML = `
+      <span style="color:${sideColor}; font-weight:700;">${side}</span>
+      <span style="color:#f8fafc;">${fillQty} @ $${fillPrice.toFixed(2)}</span>
+      <span style="color:#64748b; font-size:0.72rem;">${latency}ms • FIFO</span>
+    `;
+    feedList.insertBefore(row, feedList.firstChild);
+    if (feedList.children.length > 8) {
+      feedList.removeChild(feedList.lastChild);
+    }
+  }
+
+  renderOrderBook();
 }

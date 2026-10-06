@@ -292,7 +292,72 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   margin-bottom: 45px;
 }
 
-/* Metric Strip */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 36px;
+  align-items: center;
+  margin-bottom: 45px;
+}
+
+/* Silicon Hardware Die Visualizer Card */
+.silicon-die-card {
+  background: #06080e;
+  border: 1px solid rgba(0, 242, 254, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 242, 254, 0.1);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.silicon-die-card:hover {
+  border-color: rgba(0, 242, 254, 0.5);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 242, 254, 0.18);
+}
+
+.silicon-header {
+  background: #0b0e16;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.silicon-canvas {
+  width: 100%;
+  height: 250px;
+  display: block;
+  background: #030407;
+  cursor: crosshair;
+}
+
+.silicon-hud {
+  background: rgba(11, 14, 22, 0.95);
+  padding: 10px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+}
+
+.silicon-hud-item {
+  display: flex;
+  justify-content: space-between;
+  color: #94a3b8;
+}
+
+.silicon-hud-val {
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+/* Metric Strip & Telemetry Dials */
 .metric-strip {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -303,12 +368,27 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .metric-card {
   background: var(--bg-card);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  padding: 18px 22px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   transition: all 0.25s ease;
+  position: relative;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.metric-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.metric-gauge-icon {
+  width: 38px;
+  height: 38px;
 }
 
 .metric-card:hover {
@@ -1264,6 +1344,176 @@ footer {
 
 .hud-label {
   color: var(--text-dim);
+}
+
+/* Interactive Level 2 (L2) Order Book Matching Engine (Apex Simulator) */
+.orderbook-playground {
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 14px;
+  padding: 28px;
+  margin-top: 36px;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.5), 0 0 24px rgba(245, 158, 11, 0.08);
+}
+
+.ob-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
+}
+
+@media (max-width: 868px) {
+  .ob-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ob-ladder-container {
+  background: #04060a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.ob-ladder-header {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-dim);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 8px;
+}
+
+.ob-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 8px;
+  margin-bottom: 3px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ob-bar-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.ob-bar-ask { background: #ef4444; }
+.ob-bar-bid { background: #10b981; }
+
+.ob-spread-bar {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.03);
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  padding: 6px 0;
+  margin: 6px 0;
+  font-size: 0.75rem;
+  color: var(--accent-amber);
+  font-weight: 700;
+}
+
+.ob-feed-container {
+  background: #04060a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ob-feed-title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ob-feed-list {
+  flex-grow: 1;
+  max-height: 220px;
+  overflow-y: auto;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ob-trade-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.02);
+  animation: fadeInTrade 0.2s ease;
+}
+
+@keyframes fadeInTrade {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ob-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.btn-buy {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #10b981;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  transition: all 0.2s ease;
+}
+
+.btn-buy:hover {
+  background: rgba(16, 185, 129, 0.25);
+  border-color: #10b981;
+}
+
+.btn-sell {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #ef4444;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  transition: all 0.2s ease;
+}
+
+.btn-sell:hover {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: #ef4444;
 }
 
 /* Mobile Media Queries */
