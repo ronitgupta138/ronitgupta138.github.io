@@ -88,7 +88,6 @@
       <nav class="nav-links" id="nav-links">
         <a href="#terminal" onclick="closeNavMenu()">Terminal</a>
         <a href="#systems" onclick="closeNavMenu()">Flagship Systems</a>
-        <a href="#open-source" onclick="closeNavMenu()">Open Source</a>
         <a href="#arsenal" onclick="closeNavMenu()">Arsenal</a>
         <a href="#about" onclick="closeNavMenu()">Workstation</a>
         <a href="#contact" onclick="closeNavMenu()">Contact</a>
@@ -120,13 +119,12 @@
 
         <p class="hero-subtitle">
           I build lean, zero-bloat systems from first principles. Creator of <b>Aero Linux</b> (developer OS), 
-          <b>Vectra Core</b> (Java 21 Loom HNSW vector DB), and <b>Bharat Spatial Engine</b> (38.4k QPS 2D KD-Tree). 
-          Active upstream contributor to the Linux Mint Cinnamon compositor, Canonical Juju, and Hono.js.
+          <b>Vectra Core</b> (Java 21 Loom HNSW vector DB), and <b>Bharat Spatial Engine</b> (38.4k QPS 2D KD-Tree).
         </p>
 
         <div class="hero-cta-group">
           <a href="#systems" class="btn btn-primary btn-lg">Explore Flagship Systems ➔</a>
-          <a href="#open-source" class="btn btn-secondary btn-lg">View Upstream PRs</a>
+          <a href="#arsenal" class="btn btn-secondary btn-lg">Technical Arsenal</a>
           <button onclick="copyEmail()" class="btn btn-secondary btn-lg">
             <span>📋 Copy Email</span>
           </button>
@@ -150,9 +148,9 @@
             <div class="metric-desc">Vectra Core HNSW &amp; SQ8 quantization</div>
           </div>
           <div class="metric-card">
-            <div class="metric-val purple">8+ Upstream</div>
-            <div class="metric-label">Merged Open Source PRs</div>
-            <div class="metric-desc">Linux Mint, Cinnamon, Canonical Juju, Hono</div>
+            <div class="metric-val purple">50k+ Ops</div>
+            <div class="metric-label">Order Book Execution</div>
+            <div class="metric-desc">Apex Matching Engine FIFO priority</div>
           </div>
         </div>
       </div>
@@ -180,7 +178,6 @@
             <button class="chip-btn" onclick="runCommand('whoami')">whoami</button>
             <button class="chip-btn" onclick="runCommand('benchmarks')">benchmarks</button>
             <button class="chip-btn" onclick="runCommand('aero-status')">aero-status</button>
-            <button class="chip-btn" onclick="runCommand('pr-list')">pr-list</button>
             <button class="chip-btn" onclick="runCommand('skills')">skills</button>
             <button class="chip-btn" onclick="runCommand('contact')">contact</button>
             <button class="chip-btn" onclick="runCommand('help')">help</button>
@@ -191,7 +188,7 @@
           <div class="terminal-body" id="term-body">
             <div class="term-output" id="term-history">
               <span class="term-cyan">⚡ Welcome to Ronit Gupta's Interactive Systems Terminal.</span><br>
-              <span class="term-dim">Type a command or click any chip above (try: <b>benchmarks</b>, <b>whoami</b>, or <b>pr-list</b>).</span><br><br>
+              <span class="term-dim">Type a command or click any chip above (try: <b>benchmarks</b>, <b>whoami</b>, or <b>skills</b>).</span><br><br>
               <span class="term-prompt">ronit@workstation:~$</span> whoami<br>
               <span class="term-white">Ronit Gupta</span> — Systems &amp; Concurrency Software Engineer (Batch 2027)<br>
               <span class="term-dim">• CSBS Undergrad @ Netaji Subhash Engineering College (NSEC), Kolkata</span><br>
@@ -483,82 +480,6 @@
             </div>
           </div>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- Upstream Open Source Section -->
-    <section id="open-source" class="oss-section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">PRODUCTION CODE REVIEWS &amp; BUGFIXES</span>
-          <h2 class="section-title">Upstream Open Source Ledger</h2>
-          <p class="section-desc">
-            Direct pull requests authored and merged into upstream open-source frameworks, desktop environments, and tooling.
-          </p>
-        </div>
-
-        <div class="oss-table-wrapper">
-          <table class="oss-table">
-            <thead>
-              <tr>
-                <th>Status</th>
-                <th>Repository</th>
-                <th>Contribution / Bugfix Summary</th>
-                <th>Pull Request</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="pr-badge pr-merged">MERGED</span></td>
-                <td><a href="https://github.com/linuxmint/cinnamon" target="_blank" class="repo-badge">linuxmint/cinnamon</a></td>
-                <td>Resolved compositor modal grab leak on window destroy in Linux Mint Cinnamon desktop.</td>
-                <td><a href="https://github.com/linuxmint/cinnamon/pull/14021" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-family: var(--font-mono); font-weight: 700;">#14021 ↗</a></td>
-              </tr>
-              <tr>
-                <td><span class="pr-badge pr-merged">MERGED</span></td>
-                <td><a href="https://github.com/juju/juju" target="_blank" class="repo-badge">juju/juju</a></td>
-                <td>Added JSON tags and base64 auth field serialization to <code>dockerconfigjson</code> in Canonical Juju Kubernetes.</td>
-                <td><a href="https://github.com/juju/juju/pull/23485" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-family: var(--font-mono); font-weight: 700;">#23485 ↗</a></td>
-              </tr>
-              <tr>
-                <td><span class="pr-badge pr-active">ACTIVE PR</span></td>
-                <td><a href="https://github.com/honojs/hono" target="_blank" class="repo-badge">honojs/hono</a></td>
-                <td>Fixed TrieRouter wildcard edge-case URL route resolution in Hono.js edge framework.</td>
-                <td><a href="https://github.com/honojs/hono/pull/5458" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-family: var(--font-mono); font-weight: 700;">#5458 ↗</a></td>
-              </tr>
-              <tr>
-                <td><span class="pr-badge pr-merged">MERGED</span></td>
-                <td><a href="https://github.com/linuxmint/mintstick" target="_blank" class="repo-badge">linuxmint/mintstick</a></td>
-                <td>Hardened asynchronous ISO checksum verification and mirror download handling in MintStick.</td>
-                <td><a href="https://github.com/linuxmint/mintstick/pull/156" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-family: var(--font-mono); font-weight: 700;">#156 ↗</a></td>
-              </tr>
-              <tr>
-                <td><span class="pr-badge pr-merged">MERGED</span></td>
-                <td><a href="https://github.com/linuxmint/xed" target="_blank" class="repo-badge">linuxmint/xed</a></td>
-                <td>Explicitly specified Gtk 3.0, Gdk 3.0, and GtkSource 4 typelib versions to prevent runtime collisions.</td>
-                <td><a href="https://github.com/linuxmint/xed/pull/760" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-family: var(--font-mono); font-weight: 700;">#760 ↗</a></td>
-              </tr>
-              <tr>
-                <td><span class="pr-badge pr-merged">MERGED</span></td>
-                <td><a href="https://github.com/linuxmint/hypnotix" target="_blank" class="repo-badge">linuxmint/hypnotix</a></td>
-                <td>Implemented atomic channel logo validation and image download pipeline in Hypnotix.</td>
-                <td><a href="https://github.com/linuxmint/hypnotix/pull/434" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-family: var(--font-mono); font-weight: 700;">#434 ↗</a></td>
-              </tr>
-              <tr>
-                <td><span class="pr-badge pr-merged">MERGED</span></td>
-                <td><a href="https://github.com/shadcn-ui/ui" target="_blank" class="repo-badge">shadcn-ui/ui</a></td>
-                <td>Forwarded <code>disabled</code> prop to <code>TooltipTrigger</code> in <code>SidebarMenuButton</code> component.</td>
-                <td><a href="https://github.com/shadcn-ui/ui/pull/12120" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-family: var(--font-mono); font-weight: 700;">#12120 ↗</a></td>
-              </tr>
-              <tr>
-                <td><span class="pr-badge pr-merged">MERGED</span></td>
-                <td><a href="https://github.com/lucide-icons/lucide" target="_blank" class="repo-badge">lucide-icons/lucide</a></td>
-                <td>Exported <code>__iconData</code> and <code>__iconNode</code> across per-icon modules in Svelte package.</td>
-                <td><a href="https://github.com/lucide-icons/lucide/pull/4957" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-family: var(--font-mono); font-weight: 700;">#4957 ↗</a></td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </section>

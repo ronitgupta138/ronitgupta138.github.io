@@ -90,18 +90,6 @@ const COMMAND_RESPONSES = {
 <span class="term-dim">──────────────────────────────────────────────────────────────────────</span>
 <span class="term-green">✔ 130/130 unit tests passing in multi-distro container CI.</span>`,
 
-  'pr-list': `🌐 <span class="term-cyan">UPSTREAM OPEN SOURCE CONTRIBUTIONS (MERGED)</span>
-<span class="term-dim">──────────────────────────────────────────────────────────────────────</span>
- <span class="term-green">[MERGED]</span> linuxmint/cinnamon#14021  - Compositor modal grab leak on destroy
- <span class="term-green">[MERGED]</span> juju/juju#23485           - Canonical Juju K8s dockerconfigjson tags
- <span class="term-cyan">[ACTIVE]</span> honojs/hono#5458          - TrieRouter wildcard edge-case routing
- <span class="term-green">[MERGED]</span> linuxmint/mintstick#156   - Async ISO verification &amp; mirror update
- <span class="term-green">[MERGED]</span> linuxmint/xed#760         - Explicit Gtk/Gdk/GtkSource typelib pinning
- <span class="term-green">[MERGED]</span> linuxmint/hypnotix#434    - Atomic channel logo download pipeline
- <span class="term-green">[MERGED]</span> shadcn-ui/ui#12120        - TooltipTrigger disabled prop forwarding
- <span class="term-green">[MERGED]</span> lucide-icons/lucide#4957  - Exported icon metadata across Svelte
-<span class="term-dim">──────────────────────────────────────────────────────────────────────</span>`,
-
   skills: `🛠️ <span class="term-cyan">TECHNICAL ARSENAL &amp; SYSTEMS STACK</span>
 <span class="term-dim">──────────────────────────────────────────────────────────────────────</span>
  <span class="term-white">Systems:</span>      C, Linux Kernel, sysfs/procfs, ACPI, zRAM ZSTD, BBR TCP, GTK3
@@ -123,7 +111,6 @@ const COMMAND_RESPONSES = {
   <span class="term-cyan">whoami</span>        - Background, education &amp; engineering focus
   <span class="term-cyan">benchmarks</span>    - Real-world in-memory QPS &amp; latency metrics
   <span class="term-cyan">aero-status</span>   - Aero Linux developer OS specs &amp; release info
-  <span class="term-cyan">pr-list</span>       - Upstream open-source pull requests ledger
   <span class="term-cyan">skills</span>        - Technical competencies &amp; language stack
   <span class="term-cyan">contact</span>       - Direct email and professional profiles
   <span class="term-cyan">clear</span>         - Clear the terminal screen`
