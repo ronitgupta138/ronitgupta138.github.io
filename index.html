@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ronit Gupta | Systems &amp; High-Concurrency Backend Software Engineer</title>
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Ronit Gupta | Systems & High-Concurrency Backend Software Engineer">
+  <meta name="description" content="Systems, Concurrency, and Backend Software Engineer. Creator of Aero Linux (developer OS), Vectra Core (Java 21 Loom HNSW vector DB), and Bharat Spatial Engine (38k+ QPS 2D KD-Tree).">
+  <meta name="keywords" content="Ronit Gupta, Systems Engineer, Backend Engineer, Java 21, Loom, Aero Linux, Vector Database, HNSW, Spatial Index, High Concurrency, Linux Kernel, Kolkata">
+  <meta name="author" content="Ronit Gupta">
+  <meta name="theme-color" content="#07090e">
+  <link rel="canonical" href="https://ronitgupta138.github.io/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+
+  <!-- OpenGraph / Social Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ronitgupta138.github.io/">
+  <meta property="og:title" content="Ronit Gupta | Systems & High-Concurrency Backend Software Engineer">
+  <meta property="og:description" content="Creator of Aero Linux (developer OS), Vectra Core (Java 21 Loom HNSW vector DB), and Bharat Spatial Engine (38k+ QPS 2D KD-Tree). Upstream Linux Mint & Hono contributor.">
+  <meta property="og:image" content="https://ronitgupta138.github.io/favicon.svg">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="https://ronitgupta138.github.io/">
+  <meta name="twitter:title" content="Ronit Gupta | Systems & High-Concurrency Backend Software Engineer">
+  <meta name="twitter:description" content="Systems & Concurrency Engineer. Creator of Aero Linux, Vectra Core, Bharat Spatial Engine.">
+  <meta name="twitter:image" content="https://ronitgupta138.github.io/favicon.svg">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ronit Gupta",
+    "url": "https://ronitgupta138.github.io/",
+    "jobTitle": "Systems & Backend Software Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Aero Linux Project"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Netaji Subhash Engineering College"
+    },
+    "sameAs": [
+      "https://github.com/ronitgupta138",
+      "https://linkedin.com/in/ronitgupta138"
+    ],
+    "knowsAbout": [
+      "Systems Programming",
+      "Java 21 Loom Concurrency",
+      "Linux Kernel Internals",
+      "Vector Search Engines",
+      "Geospatial Indexing",
+      "High-Throughput Backends"
+    ]
+  }
+  </script>
+
+  <!-- Typography & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="nav-brand">
+        <span class="brand-icon">⚡</span>
+        <span class="brand-text">RONIT<b>GUPTA</b></span>
+        <span class="brand-tag">SYSTEMS</span>
+      </a>
+
+      <button class="hamburger" id="nav-hamburger" onclick="toggleNavMenu()" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="#terminal" onclick="closeNavMenu()">Terminal</a>
+        <a href="#systems" onclick="closeNavMenu()">Flagship Systems</a>
+        <a href="#open-source" onclick="closeNavMenu()">Open Source</a>
+        <a href="#arsenal" onclick="closeNavMenu()">Arsenal</a>
+        <a href="#about" onclick="closeNavMenu()">Workstation</a>
+        <a href="#contact" onclick="closeNavMenu()">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://github.com/ronitgupta138" target="_blank" class="btn btn-secondary" style="padding: 7px 14px; font-size: 0.82rem;">
+          <span>GitHub</span> ↗
+        </a>
+        <a href="#contact" class="btn btn-primary" style="padding: 7px 14px; font-size: 0.82rem;">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-badge">
+          <span class="hero-badge-pulse"></span>
+          <span>Open for SDE-1 / Systems / Backend Engineering Roles (Batch 2027)</span>
+        </div>
+
+        <h1 class="hero-title">
+          Systems &amp; High-Concurrency <span class="gradient-text">Backend Software Engineer</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          I build lean, zero-bloat systems from first principles. Creator of <b>Aero Linux</b> (developer OS), 
+          <b>Vectra Core</b> (Java 21 Loom HNSW vector DB), and <b>Bharat Spatial Engine</b> (38.4k QPS 2D KD-Tree). 
+          Active upstream contributor to the Linux Mint Cinnamon compositor, Canonical Juju, and Hono.js.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#systems" class="btn btn-primary btn-lg">Explore Flagship Systems ➔</a>
+          <a href="#open-source" class="btn btn-secondary btn-lg">View Upstream PRs</a>
+          <button onclick="copyEmail()" class="btn btn-secondary btn-lg">
+            <span>📋 Copy Email</span>
+          </button>
+        </div>
+
+        <!-- Verified Metrics Ribbon -->
+        <div class="metric-strip">
+          <div class="metric-card">
+            <div class="metric-val cyan">49 Apps</div>
+            <div class="metric-label">Native GTK3 Suite</div>
+            <div class="metric-desc">Aero Linux zero-terminal developer OS</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val emerald">38.4k QPS</div>
+            <div class="metric-label">Spatial In-Memory Query</div>
+            <div class="metric-desc">Bharat Spatial 2D KD-Tree &amp; Haversine</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val blue">16.9k QPS</div>
+            <div class="metric-label">Vector Search (KNN)</div>
+            <div class="metric-desc">Vectra Core HNSW &amp; SQ8 quantization</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val purple">8+ Upstream</div>
+            <div class="metric-label">Merged Open Source PRs</div>
+            <div class="metric-desc">Linux Mint, Cinnamon, Canonical Juju, Hono</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Terminal Simulator -->
+    <section id="terminal" class="terminal-section">
+      <div class="container">
+        <div class="terminal-card">
+          <div class="terminal-titlebar">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="terminal-title">ronit@workstation: ~/portfolio — bash</span>
+            </div>
+            <div class="terminal-status">
+              <span style="font-size: 0.7rem;">●</span> Live REPL
+            </div>
+          </div>
+
+          <!-- 1-Click Fast Command Chips -->
+          <div class="terminal-chips">
+            <span class="chips-label">Quick Run:</span>
+            <button class="chip-btn" onclick="runCommand('whoami')">whoami</button>
+            <button class="chip-btn" onclick="runCommand('benchmarks')">benchmarks</button>
+            <button class="chip-btn" onclick="runCommand('aero-status')">aero-status</button>
+            <button class="chip-btn" onclick="runCommand('pr-list')">pr-list</button>
+            <button class="chip-btn" onclick="runCommand('skills')">skills</button>
+            <button class="chip-btn" onclick="runCommand('contact')">contact</button>
+            <button class="chip-btn" onclick="runCommand('help')">help</button>
+            <button class="chip-btn" onclick="runCommand('clear')">clear</button>
+          </div>
+
+          <!-- Terminal Output Body -->
+          <div class="terminal-body" id="term-body">
+            <div class="term-output" id="term-history">
+              <span class="term-cyan">⚡ Welcome to Ronit Gupta's Interactive Systems Terminal.</span><br>
+              <span class="term-dim">Type a command or click any chip above (try: <b>benchmarks</b>, <b>whoami</b>, or <b>pr-list</b>).</span><br><br>
+              <span class="term-prompt">ronit@workstation:~$</span> whoami<br>
+              <span class="term-white">Ronit Gupta</span> — Systems &amp; Concurrency Software Engineer (Batch 2027)<br>
+              <span class="term-dim">• CSBS Undergrad @ Netaji Subhash Engineering College (NSEC), Kolkata</span><br>
+              <span class="term-dim">• Focus: In-Memory Indexes, Concurrency (Java 21 Loom), Linux Kernel &amp; OS Internals</span><br>
+              <span class="term-green">✔ Status: Actively building &amp; open for software engineering opportunities.</span>
+            </div>
+
+            <!-- Terminal Interactive Input -->
+            <form class="terminal-input-row" id="term-form" onsubmit="handleTermSubmit(event)">
+              <span class="term-prompt">ronit@workstation:~$</span>
+              <input type="text" class="term-input" id="term-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Type a command...">
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flagship Systems Section -->
+    <section id="systems" class="projects-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">ENGINEERED FROM FIRST PRINCIPLES</span>
+          <h2 class="section-title">Flagship Systems Architecture</h2>
+          <p class="section-desc">
+            Production-grade distributed backends, in-memory data structures, and custom operating systems architectures.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+
+          <!-- Project 1: Aero Linux -->
+          <div class="project-card">
+            <div class="project-card-top">
+              <span class="project-category">OPERATING SYSTEM &amp; GTK3 SUITE</span>
+              <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #10b981; font-weight: 700;">v1.4.0 Live</span>
+            </div>
+            <h3 class="project-title">Aero Linux</h3>
+            <p class="project-desc">
+              The Ultra-Lean AI &amp; High-Performance Developer Linux Distribution. Sub-350MB cold-boot idle RAM footprint, 
+              dynamic in-memory zRAM (ZSTD) compression eliminating SSD disk swap thrashing, dual desktop engine 
+              (Windows floating &amp; Sway cyber tiling), 49 native zero-terminal GTK3 developer applications, 
+              and 1-click offline DeepSeek-R1 local LLM inference.
+            </p>
+            <div class="project-specs">
+              <div class="spec-row">
+                <span class="spec-label">Idle Footprint:</span>
+                <span class="spec-val green">312 MB RAM (Bare Metal AMD Ryzen)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Native Apps:</span>
+                <span class="spec-val">49 Native GTK3 Tools (Zero Electron)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Memory Engine:</span>
+                <span class="spec-val">Dynamic zRAM ZSTD (2.8:1 Ratio)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Verification:</span>
+                <span class="spec-val green">130/130 Passing Tests &amp; Multi-Distro CI</span>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span class="tech-tag">C</span>
+              <span class="tech-tag">Python 3.12</span>
+              <span class="tech-tag">GTK 3</span>
+              <span class="tech-tag">Wayland / Sway</span>
+              <span class="tech-tag">zRAM ZSTD</span>
+              <span class="tech-tag">Debian Packaging</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/ronitgupta138/aero-linux" target="_blank" class="btn btn-secondary project-link-btn">GitHub Source ↗</a>
+              <a href="https://ronitgupta138.github.io/aero-linux/" target="_blank" class="btn btn-primary project-link-btn">Live Portal ↗</a>
+            </div>
+          </div>
+
+          <!-- Project 2: Vectra Core -->
+          <div class="project-card">
+            <div class="project-card-top">
+              <span class="project-category">VECTOR SEARCH &amp; ANN INDEX</span>
+              <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #38bdf8; font-weight: 700;">16.9k+ QPS</span>
+            </div>
+            <h3 class="project-title">Vectra Core</h3>
+            <p class="project-desc">
+              High-dimensional approximate nearest neighbor (ANN) vector database engine built from first principles in 
+              Java 21 Loom virtual threads. Features multi-layer Hierarchical Navigable Small World (HNSW) graph indexing, 
+              8-bit scalar quantization (SQ8) slashing memory footprint by 75%, and filtered hybrid search achieving 
+              0.28ms median query latency.
+            </p>
+            <div class="project-specs">
+              <div class="spec-row">
+                <span class="spec-label">Throughput:</span>
+                <span class="spec-val green">16,900+ QPS Concurrent Retrieval</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Median Latency:</span>
+                <span class="spec-val">0.28 ms (p99: 1.45 ms)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Quantization:</span>
+                <span class="spec-val">8-Bit SQ8 (75% RAM Reduction)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Concurrency:</span>
+                <span class="spec-val">Java 21 Project Loom Virtual Threads</span>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span class="tech-tag">Java 21</span>
+              <span class="tech-tag">Project Loom</span>
+              <span class="tech-tag">HNSW Graph</span>
+              <span class="tech-tag">SQ8 Quantization</span>
+              <span class="tech-tag">Cosine &amp; L2 Distance</span>
+              <span class="tech-tag">Virtual Threads</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/ronitgupta138/vectra-core" target="_blank" class="btn btn-primary project-link-btn">Inspect Architecture ↗</a>
+            </div>
+          </div>
+
+          <!-- Project 3: Bharat Spatial Engine -->
+          <div class="project-card">
+            <div class="project-card-top">
+              <span class="project-category">GEOSPATIAL HIERARCHY &amp; KD-TREE</span>
+              <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #10b981; font-weight: 700;">38.4k+ QPS</span>
+            </div>
+            <h3 class="project-title">Bharat Spatial Engine</h3>
+            <p class="project-desc">
+              National-scale geospatial hierarchy and reverse-geocoding proximity engine indexing India's 650,000+ census 
+              settlements and MDDS administrative codes. Features a 2D geographic KD-Tree with spherical Haversine pruning, 
+              transliteration-tolerant Indic trigram search, and concurrent radius queries in Java 21 Loom clocking 38,400+ QPS.
+            </p>
+            <div class="project-specs">
+              <div class="spec-row">
+                <span class="spec-label">Settlements Indexed:</span>
+                <span class="spec-val">650,000+ Indian Census Settlements</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Query Throughput:</span>
+                <span class="spec-val green">38,400+ QPS Concurrent Reads</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">p99 Latency:</span>
+                <span class="spec-val">2.09 ms under 100 concurrent workers</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Spatial Index:</span>
+                <span class="spec-val">2D Geographic KD-Tree + Haversine Pruning</span>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span class="tech-tag">Java 21</span>
+              <span class="tech-tag">2D KD-Tree</span>
+              <span class="tech-tag">Haversine Metric</span>
+              <span class="tech-tag">Trigram Search</span>
+              <span class="tech-tag">Census MDDS</span>
+              <span class="tech-tag">Zero Disk I/O</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/ronitgupta138/bharat-spatial-engine" target="_blank" class="btn btn-primary project-link-btn">Inspect Architecture ↗</a>
+            </div>
+          </div>
+
+          <!-- Project 4: Apex Matching Engine -->
+          <div class="project-card">
+            <div class="project-card-top">
+              <span class="project-category">FINANCIAL EXCHANGE ORDER BOOK</span>
+              <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #f59e0b; font-weight: 700;">50k+ Ops/sec</span>
+            </div>
+            <h3 class="project-title">Apex Matching Engine</h3>
+            <p class="project-desc">
+              Ultra-low latency continuous double auction matching engine in Java 21 Loom. Implements strict price-time 
+              priority (FIFO) order matching with red-black tree price level tracking, in-memory Level 2 (L2) market depth 
+              aggregation, and real-time STOMP WebSocket telemetry broadcasting exceeding 50,000 order executions per second.
+            </p>
+            <div class="project-specs">
+              <div class="spec-row">
+                <span class="spec-label">Order Execution:</span>
+                <span class="spec-val green">50,000+ Order Matches / Sec</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Priority Model:</span>
+                <span class="spec-val">Price-Time Priority (FIFO)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Market Depth:</span>
+                <span class="spec-val">Real-Time In-Memory Level 2 (L2)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Streaming:</span>
+                <span class="spec-val">STOMP WebSockets Real-Time Feed</span>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span class="tech-tag">Java 21</span>
+              <span class="tech-tag">Order Book</span>
+              <span class="tech-tag">Double Auction</span>
+              <span class="tech-tag">FIFO Matching</span>
+              <span class="tech-tag">WebSockets</span>
+              <span class="tech-tag">Low Latency</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/ronitgupta138/apex-matching-engine" target="_blank" class="btn btn-primary project-link-btn">Inspect Architecture ↗</a>
+            </div>
+          </div>
+
+          <!-- Project 5: FinFlow Core -->
+          <div class="project-card">
+            <div class="project-card-top">
+              <span class="project-category">ENTERPRISE BANKING REST API</span>
+              <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #38bdf8; font-weight: 700;">Production Grade</span>
+            </div>
+            <h3 class="project-title">FinFlow Core</h3>
+            <p class="project-desc">
+              Production-grade banking and financial transaction aggregation platform engineered on Spring Boot 3.3.5 
+              and PostgreSQL 16. Implements Spring Security 6 stateless JWT authentication with role-based access control (RBAC), 
+              scheduled market data ingestion, custom JPQL portfolio aggregation queries, and multi-stage containerization.
+            </p>
+            <div class="project-specs">
+              <div class="spec-row">
+                <span class="spec-label">Framework:</span>
+                <span class="spec-val">Spring Boot 3.3.5 &amp; Java 17</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Security:</span>
+                <span class="spec-val">Spring Security 6 Stateless JWT &amp; RBAC</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Database:</span>
+                <span class="spec-val">PostgreSQL 16 &amp; Custom JPQL Projections</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Deployment:</span>
+                <span class="spec-val green">Multi-Stage Docker &amp; Health Probes</span>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span class="tech-tag">Spring Boot 3.3</span>
+              <span class="tech-tag">Java 17</span>
+              <span class="tech-tag">Spring Security 6</span>
+              <span class="tech-tag">PostgreSQL 16</span>
+              <span class="tech-tag">JWT</span>
+              <span class="tech-tag">Docker</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/ronitgupta138/finflow-core" target="_blank" class="btn btn-primary project-link-btn">Inspect Architecture ↗</a>
+            </div>
+          </div>
+
+          <!-- Project 6: VoxIntel Engine -->
+          <div class="project-card">
+            <div class="project-card-top">
+              <span class="project-category">ACOUSTIC DSP &amp; SPEECH TELEMETRY</span>
+              <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #c084fc; font-weight: 700;">Real-Time DSP</span>
+            </div>
+            <h3 class="project-title">VoxIntel Engine</h3>
+            <p class="project-desc">
+              Real-time speech analytics and acoustic digital signal processing (DSP) telemetry microservice built in 
+              Python 3.11 and FastAPI. Computes fundamental frequency (F0 pitch) via autocorrelation, extracts spectral energy 
+              distribution via Fast Fourier Transform (FFT), and profiles lexical delivery pacing metrics (WPM and filler words).
+            </p>
+            <div class="project-specs">
+              <div class="spec-row">
+                <span class="spec-label">DSP Pipeline:</span>
+                <span class="spec-val">Autocorrelation Pitch &amp; FFT Spectral Energy</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Framework:</span>
+                <span class="spec-val">FastAPI &amp; Python 3.11</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Lexical Telemetry:</span>
+                <span class="spec-val">Pacing (WPM), Filler Density, Lexical Diversity</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Latency:</span>
+                <span class="spec-val green">Sub-100ms Stream Chunk Processing</span>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span class="tech-tag">Python 3.11</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">Digital Signal Processing</span>
+              <span class="tech-tag">FFT</span>
+              <span class="tech-tag">NumPy</span>
+              <span class="tech-tag">Audio Telemetry</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/ronitgupta138/vox-intel-engine" target="_blank" class="btn btn-primary project-link-btn">Inspect Architecture ↗</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Upstream Open Source Section -->
+    <section id="open-source" class="oss-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">PRODUCTION CODE REVIEWS &amp; BUGFIXES</span>
+          <h2 class="section-title">Upstream Open Source Ledger</h2>
+          <p class="section-desc">
+            Direct pull requests authored and merged into upstream open-source frameworks, desktop environments, and tooling.
+          </p>
+        </div>
+
+        <div class="oss-table-wrapper">
+          <table class="oss-table">
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Repository</th>
+                <th>Contribution / Bugfix Summary</th>
+                <th>Pull Request</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="pr-badge pr-merged">MERGED</span></td>
+                <td><a href="https://github.com/linuxmint/cinnamon" target="_blank" class="repo-badge">linuxmint/cinnamon</a></td>
+                <td>Resolved compositor modal grab leak on window destroy in Linux Mint Cinnamon desktop.</td>
+                <td><a href="https://github.com/linuxmint/cinnamon/pull/14021" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-family: var(--font-mono); font-weight: 700;">#14021 ↗</a></td>
+              </tr>
+              <tr>
+                <td><span class="pr-badge pr-merged">MERGED</span></td>
+                <td><a href="https://github.com/juju/juju" target="_blank" class="repo-badge">juju/juju</a></td>
+                <td>Added JSON tags and base64 auth field serialization to <code>dockerconfigjson</code> in Canonical Juju Kubernetes.</td>
+                <td><a href="https://github.com/juju/juju/pull/23485" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-family: var(--font-mono); font-weight: 700;">#23485 ↗</a></td>
+              </tr>
+              <tr>
+                <td><span class="pr-badge pr-active">ACTIVE PR</span></td>
+                <td><a href="https://github.com/honojs/hono" target="_blank" class="repo-badge">honojs/hono</a></td>
+                <td>Fixed TrieRouter wildcard edge-case URL route resolution in Hono.js edge framework.</td>
+                <td><a href="https://github.com/honojs/hono/pull/5458" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-family: var(--font-mono); font-weight: 700;">#5458 ↗</a></td>
+              </tr>
+              <tr>
+                <td><span class="pr-badge pr-merged">MERGED</span></td>
+                <td><a href="https://github.com/linuxmint/mintstick" target="_blank" class="repo-badge">linuxmint/mintstick</a></td>
+                <td>Hardened asynchronous ISO checksum verification and mirror download handling in MintStick.</td>
+                <td><a href="https://github.com/linuxmint/mintstick/pull/156" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-family: var(--font-mono); font-weight: 700;">#156 ↗</a></td>
+              </tr>
+              <tr>
+                <td><span class="pr-badge pr-merged">MERGED</span></td>
+                <td><a href="https://github.com/linuxmint/xed" target="_blank" class="repo-badge">linuxmint/xed</a></td>
+                <td>Explicitly specified Gtk 3.0, Gdk 3.0, and GtkSource 4 typelib versions to prevent runtime collisions.</td>
+                <td><a href="https://github.com/linuxmint/xed/pull/760" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-family: var(--font-mono); font-weight: 700;">#760 ↗</a></td>
+              </tr>
+              <tr>
+                <td><span class="pr-badge pr-merged">MERGED</span></td>
+                <td><a href="https://github.com/linuxmint/hypnotix" target="_blank" class="repo-badge">linuxmint/hypnotix</a></td>
+                <td>Implemented atomic channel logo validation and image download pipeline in Hypnotix.</td>
+                <td><a href="https://github.com/linuxmint/hypnotix/pull/434" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-family: var(--font-mono); font-weight: 700;">#434 ↗</a></td>
+              </tr>
+              <tr>
+                <td><span class="pr-badge pr-merged">MERGED</span></td>
+                <td><a href="https://github.com/shadcn-ui/ui" target="_blank" class="repo-badge">shadcn-ui/ui</a></td>
+                <td>Forwarded <code>disabled</code> prop to <code>TooltipTrigger</code> in <code>SidebarMenuButton</code> component.</td>
+                <td><a href="https://github.com/shadcn-ui/ui/pull/12120" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-family: var(--font-mono); font-weight: 700;">#12120 ↗</a></td>
+              </tr>
+              <tr>
+                <td><span class="pr-badge pr-merged">MERGED</span></td>
+                <td><a href="https://github.com/lucide-icons/lucide" target="_blank" class="repo-badge">lucide-icons/lucide</a></td>
+                <td>Exported <code>__iconData</code> and <code>__iconNode</code> across per-icon modules in Svelte package.</td>
+                <td><a href="https://github.com/lucide-icons/lucide/pull/4957" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-family: var(--font-mono); font-weight: 700;">#4957 ↗</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Arsenal -->
+    <section id="arsenal" class="arsenal-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">CORE COMPETENCIES</span>
+          <h2 class="section-title">Technical Arsenal</h2>
+          <p class="section-desc">
+            Technologies and engineering domains mastered through building production operating systems and high-throughput services.
+          </p>
+        </div>
+
+        <div class="arsenal-grid">
+          <div class="arsenal-card">
+            <span class="arsenal-icon">⚡</span>
+            <h3 class="arsenal-title">Systems &amp; Kernel Internals</h3>
+            <div class="skill-pills">
+              <span class="skill-pill">C</span>
+              <span class="skill-pill">Linux Kernel Internals</span>
+              <span class="skill-pill">sysfs &amp; procfs</span>
+              <span class="skill-pill">ACPI Power Controls</span>
+              <span class="skill-pill">zRAM (ZSTD)</span>
+              <span class="skill-pill">Google BBR TCP</span>
+              <span class="skill-pill">GTK 3 &amp; GJS</span>
+              <span class="skill-pill">Wayland / Sway</span>
+              <span class="skill-pill">Bash &amp; POSIX Shell</span>
+            </div>
+          </div>
+
+          <div class="arsenal-card">
+            <span class="arsenal-icon">☕</span>
+            <h3 class="arsenal-title">Concurrency &amp; High-Throughput Backends</h3>
+            <div class="skill-pills">
+              <span class="skill-pill">Java 21</span>
+              <span class="skill-pill">Project Loom Virtual Threads</span>
+              <span class="skill-pill">Spring Boot 3.3</span>
+              <span class="skill-pill">Spring Security 6</span>
+              <span class="skill-pill">TypeScript</span>
+              <span class="skill-pill">Node.js</span>
+              <span class="skill-pill">Hono.js</span>
+              <span class="skill-pill">FastAPI</span>
+              <span class="skill-pill">Python 3.11</span>
+              <span class="skill-pill">REST &amp; WebSockets (STOMP)</span>
+            </div>
+          </div>
+
+          <div class="arsenal-card">
+            <span class="arsenal-icon">🗄️</span>
+            <h3 class="arsenal-title">Data Structures &amp; Storage</h3>
+            <div class="skill-pills">
+              <span class="skill-pill">HNSW Vector Graphs</span>
+              <span class="skill-pill">2D KD-Tree Indexes</span>
+              <span class="skill-pill">SQ8 Scalar Quantization</span>
+              <span class="skill-pill">PostgreSQL 16</span>
+              <span class="skill-pill">Redis 7</span>
+              <span class="skill-pill">SQLite 3</span>
+              <span class="skill-pill">JPQL &amp; Hibernate</span>
+              <span class="skill-pill">Prisma ORM</span>
+            </div>
+          </div>
+
+          <div class="arsenal-card">
+            <span class="arsenal-icon">🛠️</span>
+            <h3 class="arsenal-title">DevOps, Packaging &amp; Tooling</h3>
+            <div class="skill-pills">
+              <span class="skill-pill">Docker &amp; Multi-Stage Builds</span>
+              <span class="skill-pill">Debian Packaging (.deb)</span>
+              <span class="skill-pill">Live ISO Engineering</span>
+              <span class="skill-pill">GitHub Actions CI/CD</span>
+              <span class="skill-pill">Git / gh CLI</span>
+              <span class="skill-pill">UFW Firewall</span>
+              <span class="skill-pill">Ollama &amp; Local LLMs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workstation & Philosophy Section -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-card">
+            <span class="section-tag">ENGINEERING PHILOSOPHY</span>
+            <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 14px;">"Zero Bloat • First-Principles Depth • Hand-Crafted Code"</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 16px;">
+              I believe developer tools and backend infrastructure should be fast, transparent, and respectful of hardware. 
+              Modern software has become bloated with layers of unneeded abstractions; my work focuses on building sub-millisecond, 
+              in-memory architectures and lightweight systems software that maximize compute efficiency.
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;">
+              Currently pursuing my B.Tech in <b>Computer Science &amp; Business Systems (CSBS)</b> at Netaji Subhash Engineering College (NSEC), 
+              Kolkata (Batch of 2027), targeting SDE-1, Systems, and High-Concurrency Backend Engineering roles.
+            </p>
+          </div>
+
+          <div class="spec-box">
+            <div style="color: var(--accent-cyan); font-weight: 800; margin-bottom: 8px; font-size: 0.85rem;">
+              ⚡ WORKSTATION HARDWARE &amp; KERNEL SPEC
+            </div>
+            <div style="color: var(--text-dim); margin-bottom: 12px;">$ aero doctor --full</div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div><span style="color: #64748b;">Host OS:</span> <span style="color: #f8fafc;">Aero Linux 1.4-Supernova (Kernel 7.0)</span></div>
+              <div><span style="color: #64748b;">Processor:</span> <span style="color: #f8fafc;">AMD Ryzen 5 5600H (6C/12T @ 4.2GHz)</span></div>
+              <div><span style="color: #64748b;">Memory:</span> <span style="color: #38bdf8;">15.3 GB RAM + 7.5 GB zRAM ZSTD</span></div>
+              <div><span style="color: #64748b;">Battery Cap:</span> <span style="color: #10b981;">ACPI 80% Threshold (TLP Governed)</span></div>
+              <div><span style="color: #64748b;">Storage:</span> <span style="color: #f8fafc;">PCIe Gen3 NVMe SSD (Zero-Swap Wear)</span></div>
+              <div><span style="color: #64748b;">Education:</span> <span style="color: #f8fafc;">CSBS @ NSEC, Kolkata (2023–2027)</span></div>
+              <div><span style="color: #64748b;">Target:</span> <span style="color: var(--accent-cyan); font-weight: 700;">SDE-1 / Systems / Backend Engineering</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="contact-box">
+          <span class="section-tag">GET IN TOUCH</span>
+          <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 10px;">Let's Build Something High-Performance</h2>
+          <p style="color: var(--text-muted); font-size: 0.96rem; max-width: 480px; margin: 0 auto;">
+            Available for SDE-1, Backend, and Systems Engineering roles, open-source collaborations, and technical discussions.
+          </p>
+
+          <!-- 1-Click Copy Email Bar -->
+          <div class="email-copy-bar" onclick="copyEmail()">
+            <span class="email-text" id="email-address">ronitgupta138@gmail.com</span>
+            <span class="copy-badge" id="copy-badge-text">📋 Click to copy</span>
+          </div>
+
+          <div class="social-links">
+            <a href="mailto:ronitgupta138@gmail.com" class="btn btn-secondary" style="font-size: 0.85rem;">
+              <span>✉️ Send Email</span>
+            </a>
+            <a href="https://linkedin.com/in/ronitgupta138" target="_blank" class="btn btn-secondary" style="font-size: 0.85rem;">
+              <span>💼 LinkedIn</span> ↗
+            </a>
+            <a href="https://github.com/ronitgupta138" target="_blank" class="btn btn-secondary" style="font-size: 0.85rem;">
+              <span>🐙 GitHub</span> ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-container">
+      <div>
+        © 2026 Ronit Gupta. Hand-crafted with zero bloat.
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.78rem;">
+        <span>Location: Kolkata, India 🇮🇳</span> • 
+        <span style="color: var(--accent-cyan);">Sub-50ms Cold Load</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">Copied to clipboard! ✓</div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
