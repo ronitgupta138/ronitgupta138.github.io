@@ -228,8 +228,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Initialize interactive particle background
+  // Initialize interactive engines
   initParticleCanvas();
+  initSpotlightLighting();
+  initKDTreePlayground();
+  initCommandPalette();
 });
 
 // Lightweight Interactive Particle Canvas Engine
@@ -329,4 +332,444 @@ function initParticleCanvas() {
   }
 
   requestAnimationFrame(render);
+}
+
+// ─────────────────────────────────────────────────────────────
+// Radial Spotlight Sheen Lighting Engine (Linear / Stripe Sheen)
+// ─────────────────────────────────────────────────────────────
+function initSpotlightLighting() {
+  const cards = document.querySelectorAll('.spotlight-card');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--mouse-x', `-999px`);
+      card.style.setProperty('--mouse-y', `-999px`);
+    });
+  });
+}
+
+// ─────────────────────────────────────────────────────────────
+// Raycast / Spotlight Command Palette Controller (Cmd+K / Ctrl+K)
+// ─────────────────────────────────────────────────────────────
+const CMD_ITEMS = [
+  { id: 'jump-systems', title: 'Flagship Systems Architecture', desc: 'Aero Linux, Vectra Core, Bharat Spatial, Apex', icon: '⚡', group: 'Navigation', badge: 'Jump', action: () => scrollToSection('systems') },
+  { id: 'jump-kdtree', title: 'KD-Tree Spatial Simulator', desc: 'Live in-browser coordinate search playground', icon: '🗺️', group: 'Navigation', badge: 'Jump', action: () => scrollToSection('kdtree-canvas') },
+  { id: 'jump-terminal', title: 'Interactive Systems Terminal', desc: 'Live terminal REPL simulator', icon: '⌨️', group: 'Navigation', badge: 'Jump', action: () => scrollToSection('terminal') },
+  { id: 'jump-arsenal', title: 'Technical Arsenal & Stack', desc: 'C, Java 21 Loom, Spring Boot, Linux internals', icon: '🛠️', group: 'Navigation', badge: 'Jump', action: () => scrollToSection('arsenal') },
+  { id: 'jump-about', title: 'Workstation & Philosophy', desc: 'AMD Ryzen 5600H, Aero Linux specs', icon: '💻', group: 'Navigation', badge: 'Jump', action: () => scrollToSection('about') },
+  { id: 'jump-contact', title: 'Contact & Connect', desc: 'Email, LinkedIn, GitHub profiles', icon: '📬', group: 'Navigation', badge: 'Jump', action: () => scrollToSection('contact') },
+
+  { id: 'act-email', title: 'Copy Email Address', desc: 'ronitgupta138@gmail.com', icon: '📋', group: 'Actions', badge: 'Action', action: () => copyEmail() },
+  { id: 'act-benchmarks', title: 'Run Hardware Benchmarks', desc: 'Execute in terminal simulator', icon: '🚀', group: 'Actions', badge: 'Terminal', action: () => { scrollToSection('terminal'); runCommand('benchmarks'); } },
+  { id: 'act-aero-status', title: 'Inspect Aero Linux Status', desc: 'View 49 GTK3 apps & zRAM telemetry', icon: '🐧', group: 'Actions', badge: 'Terminal', action: () => { scrollToSection('terminal'); runCommand('aero-status'); } },
+  { id: 'act-whoami', title: 'Run Whoami', desc: 'Print background and engineering focus', icon: '👤', group: 'Actions', badge: 'Terminal', action: () => { scrollToSection('terminal'); runCommand('whoami'); } },
+  { id: 'act-portal', title: 'Visit Aero Linux Live Portal', desc: 'https://ronitgupta138.github.io/aero-linux/', icon: '🌐', group: 'External', badge: 'Portal', action: () => window.open('https://ronitgupta138.github.io/aero-linux/', '_blank') },
+  { id: 'act-github', title: 'Open GitHub Profile', desc: 'github.com/ronitgupta138', icon: '🐙', group: 'External', badge: 'GitHub', action: () => window.open('https://github.com/ronitgupta138', '_blank') },
+  { id: 'act-linkedin', title: 'Open LinkedIn Profile', desc: 'linkedin.com/in/ronitgupta138', icon: '💼', group: 'External', badge: 'LinkedIn', action: () => window.open('https://linkedin.com/in/ronitgupta138', '_blank') }
+];
+
+let activeCmdIndex = 0;
+let filteredCmdItems = [...CMD_ITEMS];
+
+function openCmdPalette() {
+  const modal = document.getElementById('cmd-backdrop');
+  const input = document.getElementById('cmd-input');
+  if (modal) {
+    modal.classList.add('open');
+    if (input) {
+      input.value = '';
+      input.focus();
+    }
+    filteredCmdItems = [...CMD_ITEMS];
+    activeCmdIndex = 0;
+    renderCmdList();
+  }
+}
+
+function closeCmdPalette() {
+  const modal = document.getElementById('cmd-backdrop');
+  if (modal) modal.classList.remove('open');
+}
+
+function handleCmdBackdropClick(e) {
+  if (e.target.id === 'cmd-backdrop') {
+    closeCmdPalette();
+  }
+}
+
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function filterCmdList() {
+  const input = document.getElementById('cmd-input');
+  const q = (input?.value || '').trim().toLowerCase();
+  if (!q) {
+    filteredCmdItems = [...CMD_ITEMS];
+  } else {
+    filteredCmdItems = CMD_ITEMS.filter(it => 
+      it.title.toLowerCase().includes(q) || 
+      it.desc.toLowerCase().includes(q) || 
+      it.group.toLowerCase().includes(q)
+    );
+  }
+  activeCmdIndex = 0;
+  renderCmdList();
+}
+
+function renderCmdList() {
+  const listEl = document.getElementById('cmd-list');
+  if (!listEl) return;
+
+  if (filteredCmdItems.length === 0) {
+    listEl.innerHTML = `<div style="padding: 24px; text-align: center; color: var(--text-dim); font-size: 0.85rem;">No matching commands found.</div>`;
+    return;
+  }
+
+  let html = '';
+  let currentGroup = '';
+
+  filteredCmdItems.forEach((item, idx) => {
+    if (item.group !== currentGroup) {
+      currentGroup = item.group;
+      html += `<div class="cmd-group-title">${escapeHtml(currentGroup)}</div>`;
+    }
+    const isActive = idx === activeCmdIndex ? 'active' : '';
+    html += `
+      <div class="cmd-item ${isActive}" onclick="executeCmdItem(${idx})" onmouseenter="setActiveCmdIndex(${idx})">
+        <div class="cmd-item-left">
+          <span class="cmd-item-icon">${item.icon}</span>
+          <div>
+            <span class="cmd-item-title">${escapeHtml(item.title)}</span>
+            <span class="cmd-item-desc">${escapeHtml(item.desc)}</span>
+          </div>
+        </div>
+        <span class="cmd-item-badge">${escapeHtml(item.badge)}</span>
+      </div>
+    `;
+  });
+
+  listEl.innerHTML = html;
+}
+
+function setActiveCmdIndex(idx) {
+  activeCmdIndex = idx;
+  const items = document.querySelectorAll('.cmd-item');
+  items.forEach((el, i) => {
+    el.classList.toggle('active', i === idx);
+  });
+}
+
+function executeCmdItem(idx) {
+  const item = filteredCmdItems[idx];
+  if (item && item.action) {
+    closeCmdPalette();
+    item.action();
+  }
+}
+
+function initCommandPalette() {
+  window.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      const modal = document.getElementById('cmd-backdrop');
+      if (modal?.classList.contains('open')) {
+        closeCmdPalette();
+      } else {
+        openCmdPalette();
+      }
+    } else if (e.key === 'Escape') {
+      closeCmdPalette();
+    } else if (document.getElementById('cmd-backdrop')?.classList.contains('open')) {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (activeCmdIndex < filteredCmdItems.length - 1) {
+          setActiveCmdIndex(activeCmdIndex + 1);
+        }
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (activeCmdIndex > 0) {
+          setActiveCmdIndex(activeCmdIndex - 1);
+        }
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        executeCmdItem(activeCmdIndex);
+      }
+    }
+  });
+}
+
+// ─────────────────────────────────────────────────────────────
+// ⚡ 2D KD-Tree Spatial Engine Live Playground (Bharat Spatial)
+// ─────────────────────────────────────────────────────────────
+let kdTree = null;
+let kdTreePoints = [];
+
+const SEED_SETTLEMENTS = [
+  { name: "Kolkata (NSEC Hub)", mdds: "312011", x: 0.78, y: 0.52 },
+  { name: "Howrah District", mdds: "312015", x: 0.75, y: 0.55 },
+  { name: "Bengaluru Tech Corridor", mdds: "512001", x: 0.44, y: 0.80 },
+  { name: "Hyderabad Cyberabad", mdds: "411002", x: 0.49, y: 0.67 },
+  { name: "Mumbai Nariman Point", mdds: "421001", x: 0.22, y: 0.62 },
+  { name: "Pune Hinjewadi", mdds: "421005", x: 0.26, y: 0.66 },
+  { name: "Delhi Connaught Hub", mdds: "110001", x: 0.42, y: 0.28 },
+  { name: "Noida Sector 62", mdds: "110045", x: 0.45, y: 0.30 },
+  { name: "Gurugram Cyber City", mdds: "110080", x: 0.40, y: 0.31 },
+  { name: "Chennai Tidel Park", mdds: "600001", x: 0.55, y: 0.84 },
+  { name: "Ahmedabad GIFT City", mdds: "380001", x: 0.21, y: 0.46 },
+  { name: "Jaipur Malviya Nagar", mdds: "302001", x: 0.32, y: 0.35 },
+  { name: "Chandigarh IT Park", mdds: "160001", x: 0.38, y: 0.20 },
+  { name: "Kochi Infopark", mdds: "682001", x: 0.42, y: 0.90 },
+  { name: "Bhubaneswar Infocity", mdds: "751001", x: 0.68, y: 0.58 },
+  { name: "Indore Crystal IT", mdds: "452001", x: 0.35, y: 0.50 },
+  { name: "Lucknow Gomti Nagar", mdds: "226001", x: 0.52, y: 0.36 },
+  { name: "Patna Patliputra", mdds: "800001", x: 0.64, y: 0.42 },
+  { name: "Visakhapatnam Cyber Valley", mdds: "530001", x: 0.61, y: 0.71 },
+  { name: "Coimbatore TIDEL", mdds: "641001", x: 0.43, y: 0.86 },
+  { name: "Guwahati Tech Park", mdds: "781001", x: 0.88, y: 0.38 },
+  { name: "Surat Diamond Bourse", mdds: "395001", x: 0.22, y: 0.53 },
+  { name: "Nagpur MIHAN", mdds: "440001", x: 0.47, y: 0.55 },
+  { name: "Bhopal MP Nagar", mdds: "462001", x: 0.39, y: 0.49 },
+  { name: "Thiruvananthapuram Technopark", mdds: "695001", x: 0.43, y: 0.95 },
+  { name: "Mysuru Hebbal", mdds: "570001", x: 0.41, y: 0.82 },
+  { name: "Dehradun IT Park", mdds: "248001", x: 0.45, y: 0.23 },
+  { name: "Ranchi Kanke", mdds: "834001", x: 0.63, y: 0.49 },
+  { name: "Raipur Naya Raipur", mdds: "492001", x: 0.54, y: 0.57 },
+  { name: "Varanasi BHU Area", mdds: "221001", x: 0.57, y: 0.41 },
+  { name: "Amritsar GT Road", mdds: "143001", x: 0.33, y: 0.19 },
+  { name: "Shimla Mall", mdds: "171001", x: 0.41, y: 0.17 }
+];
+
+function buildKDTreeRecursive(points, depth = 0, bounds = { xMin: 0, xMax: 1, yMin: 0, yMax: 1 }) {
+  if (points.length === 0) return null;
+  const axis = depth % 2; // 0 = X, 1 = Y
+  points.sort((a, b) => (axis === 0 ? a.x - b.x : a.y - b.y));
+  const median = Math.floor(points.length / 2);
+  const node = points[median];
+
+  const leftBounds = { ...bounds };
+  const rightBounds = { ...bounds };
+  if (axis === 0) {
+    leftBounds.xMax = node.x;
+    rightBounds.xMin = node.x;
+  } else {
+    leftBounds.yMax = node.y;
+    rightBounds.yMin = node.y;
+  }
+
+  return {
+    point: node,
+    axis,
+    bounds,
+    left: buildKDTreeRecursive(points.slice(0, median), depth + 1, leftBounds),
+    right: buildKDTreeRecursive(points.slice(median + 1), depth + 1, rightBounds)
+  };
+}
+
+function findNearestNeighbor(node, target, best = { node: null, distSq: Infinity, hops: 0, pruned: 0 }) {
+  if (!node) return best;
+  best.hops++;
+
+  const dx = target.x - node.point.x;
+  const dy = target.y - node.point.y;
+  const distSq = dx * dx + dy * dy;
+
+  if (distSq < best.distSq) {
+    best.distSq = distSq;
+    best.node = node.point;
+  }
+
+  const axisDiff = node.axis === 0 ? target.x - node.point.x : target.y - node.point.y;
+  const first = axisDiff < 0 ? node.left : node.right;
+  const second = axisDiff < 0 ? node.right : node.left;
+
+  findNearestNeighbor(first, target, best);
+
+  if (axisDiff * axisDiff < best.distSq) {
+    findNearestNeighbor(second, target, best);
+  } else {
+    best.pruned++;
+  }
+
+  return best;
+}
+
+let kdtreeCanvas = null;
+let kdtreeCtx = null;
+let kdtreeCursor = null;
+
+function initKDTreePlayground() {
+  kdtreeCanvas = document.getElementById('kdtree-canvas');
+  if (!kdtreeCanvas) return;
+  kdtreeCtx = kdtreeCanvas.getContext('2d');
+
+  kdTreePoints = [...SEED_SETTLEMENTS];
+  kdTree = buildKDTreeRecursive([...kdTreePoints]);
+
+  function resizeCanvas() {
+    const rect = kdtreeCanvas.getBoundingClientRect();
+    kdtreeCanvas.width = rect.width;
+    kdtreeCanvas.height = 340;
+    renderKDTreeCanvas();
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  kdtreeCanvas.addEventListener('mousemove', (e) => {
+    const rect = kdtreeCanvas.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    kdtreeCursor = { x: Math.max(0, Math.min(1, x)), y: Math.max(0, Math.min(1, y)) };
+    renderKDTreeCanvas();
+  });
+
+  kdtreeCanvas.addEventListener('mouseleave', () => {
+    kdtreeCursor = null;
+    renderKDTreeCanvas();
+  });
+}
+
+function reseedKDTree() {
+  kdTreePoints = SEED_SETTLEMENTS.map(p => ({
+    ...p,
+    x: Math.max(0.08, Math.min(0.92, p.x + (Math.random() - 0.5) * 0.12)),
+    y: Math.max(0.08, Math.min(0.92, p.y + (Math.random() - 0.5) * 0.12))
+  }));
+  kdTree = buildKDTreeRecursive([...kdTreePoints]);
+  renderKDTreeCanvas();
+}
+
+function renderKDTreeCanvas() {
+  if (!kdtreeCanvas || !kdtreeCtx) return;
+  const ctx = kdtreeCtx;
+  const W = kdtreeCanvas.width;
+  const H = kdtreeCanvas.height;
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Grid lines
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+  ctx.lineWidth = 1;
+  const gridSize = 40;
+  for (let x = 0; x < W; x += gridSize) {
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+  }
+  for (let y = 0; y < H; y += gridSize) {
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+  }
+
+  // Draw recursive partition split planes
+  function drawSplits(node) {
+    if (!node) return;
+    const b = node.bounds;
+    const px = node.point.x * W;
+    const py = node.point.y * H;
+
+    ctx.lineWidth = 1;
+    if (node.axis === 0) {
+      ctx.strokeStyle = 'rgba(0, 242, 254, 0.24)';
+      ctx.beginPath();
+      ctx.moveTo(px, b.yMin * H);
+      ctx.lineTo(px, b.yMax * H);
+      ctx.stroke();
+    } else {
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.24)';
+      ctx.beginPath();
+      ctx.moveTo(b.xMin * W, py);
+      ctx.lineTo(b.xMax * W, py);
+      ctx.stroke();
+    }
+
+    drawSplits(node.left);
+    drawSplits(node.right);
+  }
+
+  drawSplits(kdTree);
+
+  // Draw settlement nodes
+  kdTreePoints.forEach(p => {
+    const px = p.x * W;
+    const py = p.y * H;
+    ctx.beginPath();
+    ctx.arc(px, py, 3.5, 0, Math.PI * 2);
+    ctx.fillStyle = '#10b981';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(16, 185, 129, 0.35)';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+  });
+
+  // Nearest Neighbor Query if cursor is present
+  if (kdtreeCursor && kdTree) {
+    const t0 = performance.now();
+    const result = findNearestNeighbor(kdTree, kdtreeCursor);
+    const t1 = performance.now();
+    const latencyMs = (t1 - t0).toFixed(3);
+
+    const cx = kdtreeCursor.x * W;
+    const cy = kdtreeCursor.y * H;
+
+    if (result.node) {
+      const nx = result.node.x * W;
+      const ny = result.node.y * H;
+      const distPx = Math.sqrt((cx - nx) * (cx - nx) + (cy - ny) * (cy - ny));
+
+      // Bounding search radius circle
+      ctx.beginPath();
+      ctx.arc(cx, cy, distPx, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(0, 242, 254, 0.25)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 4]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Laser line to nearest node
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(nx, ny);
+      ctx.strokeStyle = '#00f2fe';
+      ctx.lineWidth = 1.8;
+      ctx.stroke();
+
+      // Nearest node glowing highlight
+      ctx.beginPath();
+      ctx.arc(nx, ny, 7, 0, Math.PI * 2);
+      ctx.fillStyle = '#f59e0b';
+      ctx.fill();
+      ctx.shadowColor = '#f59e0b';
+      ctx.shadowBlur = 12;
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      // Update HUD
+      const nameEl = document.getElementById('hud-name');
+      const mddsEl = document.getElementById('hud-mdds');
+      const distEl = document.getElementById('hud-dist');
+      const prunedEl = document.getElementById('hud-pruned');
+      const latencyEl = document.getElementById('hud-latency');
+
+      if (nameEl) nameEl.textContent = result.node.name;
+      if (mddsEl) mddsEl.textContent = result.node.mdds;
+      if (distEl) distEl.textContent = `${(Math.sqrt(result.distSq) * 100).toFixed(1)} units`;
+      if (prunedEl) prunedEl.textContent = `${result.pruned} branches (hops: ${result.hops})`;
+      if (latencyEl) latencyEl.textContent = `${latencyMs} ms`;
+    }
+
+    // Cursor crosshair
+    ctx.strokeStyle = '#00f2fe';
+    ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(cx - 8, cy); ctx.lineTo(cx + 8, cy); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(cx, cy - 8); ctx.lineTo(cx + 8, cy); ctx.stroke();
+    ctx.beginPath(); ctx.arc(cx, cy, 3, 0, Math.PI * 2); ctx.stroke();
+  }
 }

@@ -97,6 +97,9 @@
       </nav>
 
       <div class="nav-actions">
+        <button class="cmd-trigger-btn" onclick="openCmdPalette()" title="Open Command Palette (Cmd+K / Ctrl+K)">
+          <span>Search</span> <kbd>⌘K</kbd>
+        </button>
         <a href="https://github.com/ronitgupta138" target="_blank" class="btn btn-secondary" style="padding: 7px 14px; font-size: 0.82rem;">
           <span>GitHub</span> ↗
         </a>
@@ -135,22 +138,22 @@
 
         <!-- Verified Metrics Ribbon -->
         <div class="metric-strip">
-          <div class="metric-card">
+          <div class="metric-card spotlight-card">
             <div class="metric-val cyan">49 Apps</div>
             <div class="metric-label">Native GTK3 Suite</div>
             <div class="metric-desc">Aero Linux zero-terminal developer OS</div>
           </div>
-          <div class="metric-card">
+          <div class="metric-card spotlight-card">
             <div class="metric-val emerald">38.4k QPS</div>
             <div class="metric-label">Spatial In-Memory Query</div>
             <div class="metric-desc">Bharat Spatial 2D KD-Tree &amp; Haversine</div>
           </div>
-          <div class="metric-card">
+          <div class="metric-card spotlight-card">
             <div class="metric-val blue">16.9k QPS</div>
             <div class="metric-label">Vector Search (KNN)</div>
             <div class="metric-desc">Vectra Core HNSW &amp; SQ8 quantization</div>
           </div>
-          <div class="metric-card">
+          <div class="metric-card spotlight-card">
             <div class="metric-val purple">50k+ Ops</div>
             <div class="metric-label">Order Book Execution</div>
             <div class="metric-desc">Apex Matching Engine FIFO priority</div>
@@ -223,7 +226,7 @@
         <div class="projects-grid">
 
           <!-- Project 1: Aero Linux -->
-          <div class="project-card">
+          <div class="project-card spotlight-card">
             <div class="project-card-top">
               <span class="project-category">OPERATING SYSTEM &amp; GTK3 SUITE</span>
               <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #10b981; font-weight: 700;">v1.4.0 Live</span>
@@ -268,7 +271,7 @@
           </div>
 
           <!-- Project 2: Vectra Core -->
-          <div class="project-card">
+          <div class="project-card spotlight-card">
             <div class="project-card-top">
               <span class="project-category">VECTOR SEARCH &amp; ANN INDEX</span>
               <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #38bdf8; font-weight: 700;">16.9k+ QPS</span>
@@ -312,7 +315,7 @@
           </div>
 
           <!-- Project 3: Bharat Spatial Engine -->
-          <div class="project-card">
+          <div class="project-card spotlight-card">
             <div class="project-card-top">
               <span class="project-category">GEOSPATIAL HIERARCHY &amp; KD-TREE</span>
               <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #10b981; font-weight: 700;">38.4k+ QPS</span>
@@ -355,7 +358,7 @@
           </div>
 
           <!-- Project 4: Apex Matching Engine -->
-          <div class="project-card">
+          <div class="project-card spotlight-card">
             <div class="project-card-top">
               <span class="project-category">FINANCIAL EXCHANGE ORDER BOOK</span>
               <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #f59e0b; font-weight: 700;">50k+ Ops/sec</span>
@@ -398,7 +401,7 @@
           </div>
 
           <!-- Project 5: FinFlow Core -->
-          <div class="project-card">
+          <div class="project-card spotlight-card">
             <div class="project-card-top">
               <span class="project-category">ENTERPRISE BANKING REST API</span>
               <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #38bdf8; font-weight: 700;">Production Grade</span>
@@ -441,7 +444,7 @@
           </div>
 
           <!-- Project 6: VoxIntel Engine -->
-          <div class="project-card">
+          <div class="project-card spotlight-card">
             <div class="project-card-top">
               <span class="project-category">ACOUSTIC DSP &amp; SPEECH TELEMETRY</span>
               <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #c084fc; font-weight: 700;">Real-Time DSP</span>
@@ -483,6 +486,35 @@
             </div>
           </div>
 
+        </div>
+
+        <!-- Live Algorithmic Playground: Interactive 2D KD-Tree Simulator -->
+        <div class="kdtree-playground spotlight-card">
+          <div class="kdtree-header">
+            <div>
+              <span class="project-category" style="color: #10b981; border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.1);">LIVE IN-BROWSER ALGORITHMIC ENGINE</span>
+              <h3 style="font-size: 1.45rem; font-weight: 800; margin-top: 6px; color: #fff;">Interactive 2D KD-Tree Spatial Partitioning Playground</h3>
+              <p style="color: var(--text-muted); font-size: 0.92rem; margin-top: 4px; max-width: 820px;">
+                Direct algorithmic proof of the <b>Bharat Spatial Engine</b>. Move your cursor across the coordinate space to trigger recursive nearest-neighbor KNN query. Watch alternating <b>X-split</b> (cyan vertical) and <b>Y-split</b> (blue horizontal) bounding planes recursively prune the spatial search in nanoseconds.
+              </p>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+              <button class="btn btn-secondary" onclick="reseedKDTree()" style="font-size: 0.78rem; padding: 7px 14px; font-family: var(--font-mono);">
+                <span>🎲 Re-Seed Coordinates</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="kdtree-canvas-wrapper">
+            <canvas id="kdtree-canvas" class="kdtree-canvas"></canvas>
+            <div class="kdtree-crosshair-hud" id="kdtree-hud">
+              <span class="hud-item"><span class="hud-label">Nearest Settlement:</span> <b id="hud-name" style="color: #00f2fe;">Hover over canvas</b></span>
+              <span class="hud-item"><span class="hud-label">MDDS Code:</span> <code id="hud-mdds" style="color: #38bdf8;">—</code></span>
+              <span class="hud-item"><span class="hud-label">Euclidean Dist:</span> <span id="hud-dist" style="color: #f8fafc;">—</span></span>
+              <span class="hud-item"><span class="hud-label">Pruned Nodes:</span> <span id="hud-pruned" style="color: #10b981;">—</span></span>
+              <span class="hud-item"><span class="hud-label">Query Latency:</span> <b id="hud-latency" style="color: #34d399;">&lt; 0.04 ms</b></span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -667,6 +699,25 @@
 
   <!-- Toast Notification -->
   <div class="toast" id="toast">Copied to clipboard! ✓</div>
+
+  <!-- Raycast / Spotlight Command Palette Modal -->
+  <div class="cmd-backdrop" id="cmd-backdrop" onclick="handleCmdBackdropClick(event)">
+    <div class="cmd-box">
+      <div class="cmd-header">
+        <span class="cmd-search-icon">🔍</span>
+        <input type="text" id="cmd-input" class="cmd-input" placeholder="Type a command or jump to section (e.g. aero, vectra, benchmarks, contact)..." autocomplete="off" oninput="filterCmdList()">
+        <kbd class="cmd-esc-kbd" onclick="closeCmdPalette()">ESC</kbd>
+      </div>
+      <div class="cmd-list" id="cmd-list">
+        <!-- Injected dynamically by script.js -->
+      </div>
+      <div class="cmd-footer">
+        <span>Navigate <kbd>↑</kbd> <kbd>↓</kbd></span>
+        <span>Select <kbd>↵</kbd></span>
+        <span>Close <kbd>ESC</kbd></span>
+      </div>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="script.js"></script>
