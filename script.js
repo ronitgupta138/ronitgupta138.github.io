@@ -227,4 +227,106 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // Initialize interactive particle background
+  initParticleCanvas();
 });
+
+// Lightweight Interactive Particle Canvas Engine
+function initParticleCanvas() {
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas) return;
+
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
+  const ctx = canvas.getContext('2d');
+  let width = (canvas.width = window.innerWidth);
+  let height = (canvas.height = window.innerHeight);
+
+  let mouse = { x: -9999, y: -9999, radius: 130 };
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+  window.addEventListener('mouseleave', () => {
+    mouse.x = -9999;
+    mouse.y = -9999;
+  });
+
+  const particleCount = Math.min(Math.floor((width * height) / 22000), 55);
+  const particles = [];
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.45,
+      vy: (Math.random() - 0.5) * 0.45,
+      radius: Math.random() * 1.5 + 0.8
+    });
+  }
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+
+  let isRunning = true;
+  document.addEventListener('visibilitychange', () => {
+    isRunning = !document.hidden;
+    if (isRunning) requestAnimationFrame(render);
+  });
+
+  function render() {
+    if (!isRunning) return;
+    ctx.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0) p.x = width;
+      else if (p.x > width) p.x = 0;
+      if (p.y < 0) p.y = height;
+      else if (p.y > height) p.y = 0;
+
+      const dxm = p.x - mouse.x;
+      const dym = p.y - mouse.y;
+      const distM = Math.sqrt(dxm * dxm + dym * dym);
+      if (distM < mouse.radius) {
+        const force = (1 - distM / mouse.radius) * 1.2;
+        p.x += (dxm / distM) * force;
+        p.y += (dym / distM) * force;
+      }
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0, 242, 254, 0.4)';
+      ctx.fill();
+
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        const dx = p.x - p2.x;
+        const dy = p.y - p2.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 110) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = `rgba(0, 242, 254, ${(1 - dist / 110) * 0.12})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(render);
+  }
+
+  requestAnimationFrame(render);
+}

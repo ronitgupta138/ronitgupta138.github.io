@@ -70,6 +70,9 @@
 </head>
 <body>
 
+  <!-- Interactive Background Canvas (Zero-bloat particle mesh) -->
+  <canvas id="bg-canvas" class="bg-canvas" aria-hidden="true"></canvas>
+
   <!-- Sticky Navbar -->
   <header class="navbar">
     <div class="container nav-container">
@@ -579,19 +582,38 @@
             </p>
           </div>
 
-          <div class="spec-box">
-            <div style="color: var(--accent-cyan); font-weight: 800; margin-bottom: 8px; font-size: 0.85rem;">
-              ⚡ WORKSTATION HARDWARE &amp; KERNEL SPEC
+          <!-- Floating ronit.config.sys Card -->
+          <div class="config-card">
+            <div class="config-card-header">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="config-tab">
+                <span>⚙️</span>
+                <span>ronit.config.sys</span>
+              </div>
+              <span class="config-badge">SYSTEMS SPEC</span>
             </div>
-            <div style="color: var(--text-dim); margin-bottom: 12px;">$ aero doctor --full</div>
-            <div style="display: flex; flex-direction: column; gap: 6px;">
-              <div><span style="color: #64748b;">Host OS:</span> <span style="color: #f8fafc;">Aero Linux 1.4-Supernova (Kernel 7.0)</span></div>
-              <div><span style="color: #64748b;">Processor:</span> <span style="color: #f8fafc;">AMD Ryzen 5 5600H (6C/12T @ 4.2GHz)</span></div>
-              <div><span style="color: #64748b;">Memory:</span> <span style="color: #38bdf8;">15.3 GB RAM + 7.5 GB zRAM ZSTD</span></div>
-              <div><span style="color: #64748b;">Battery Cap:</span> <span style="color: #10b981;">ACPI 80% Threshold (TLP Governed)</span></div>
-              <div><span style="color: #64748b;">Storage:</span> <span style="color: #f8fafc;">PCIe Gen3 NVMe SSD (Zero-Swap Wear)</span></div>
-              <div><span style="color: #64748b;">Education:</span> <span style="color: #f8fafc;">CSBS @ NSEC, Kolkata (2023–2027)</span></div>
-              <div><span style="color: #64748b;">Target:</span> <span style="color: var(--accent-cyan); font-weight: 700;">SDE-1 / Systems / Backend Engineering</span></div>
+            <div class="config-card-body">
+              <pre><code><span class="code-line"><span class="line-num">01</span><span class="code-comment">// Systems &amp; Concurrency Engineer Profile</span></span>
+<span class="code-line"><span class="line-num">02</span><span class="code-keyword">export const</span> <span class="code-def">engineer</span> = {</span>
+<span class="code-line"><span class="line-num">03</span>  <span class="code-prop">name</span>: <span class="code-str">"Ronit Gupta"</span>,</span>
+<span class="code-line"><span class="line-num">04</span>  <span class="code-prop">role</span>: <span class="code-str">"Systems &amp; High-Concurrency Backend Engineer"</span>,</span>
+<span class="code-line"><span class="line-num">05</span>  <span class="code-prop">education</span>: <span class="code-str">"CSBS @ NSEC Kolkata (2023–2027)"</span>,</span>
+<span class="code-line"><span class="line-num">06</span>  <span class="code-prop">workstation</span>: {</span>
+<span class="code-line"><span class="line-num">07</span>    <span class="code-prop">os</span>: <span class="code-str">"Aero Linux 1.4-Supernova (Kernel 7.0)"</span>,</span>
+<span class="code-line"><span class="line-num">08</span>    <span class="code-prop">cpu</span>: <span class="code-str">"AMD Ryzen 5 5600H (6C/12T @ 4.2GHz)"</span>,</span>
+<span class="code-line"><span class="line-num">09</span>    <span class="code-prop">ram</span>: <span class="code-str">"15.3GB Physical + 7.5GB zRAM ZSTD"</span>,</span>
+<span class="code-line"><span class="line-num">10</span>    <span class="code-prop">batteryCap</span>: <span class="code-str">"ACPI 80% Threshold (TLP Governed)"</span></span>
+<span class="code-line"><span class="line-num">11</span>  },</span>
+<span class="code-line"><span class="line-num">12</span>  <span class="code-prop">concurrencyEngine</span>: <span class="code-str">"Java 21 Project Loom (Virtual Threads)"</span>,</span>
+<span class="code-line"><span class="line-num">13</span>  <span class="code-prop">spatialThroughput</span>: <span class="code-num">38400</span>, <span class="code-comment">// QPS (2D KD-Tree)</span></span>
+<span class="code-line"><span class="line-num">14</span>  <span class="code-prop">vectorThroughput</span>: <span class="code-num">16900</span>,  <span class="code-comment">// QPS (Vectra Core HNSW)</span></span>
+<span class="code-line"><span class="line-num">15</span>  <span class="code-prop">philosophy</span>: <span class="code-str">"Zero Bloat • Hand-Crafted Code"</span>,</span>
+<span class="code-line"><span class="line-num">16</span>  <span class="code-prop">available</span>: <span class="code-bool">true</span> <span class="code-comment">// SDE-1 / Systems Roles</span></span>
+<span class="code-line"><span class="line-num">17</span>};</span></code></pre>
             </div>
           </div>
         </div>

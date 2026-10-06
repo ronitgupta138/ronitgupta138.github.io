@@ -44,6 +44,23 @@ body {
   background-attachment: fixed;
 }
 
+/* Interactive Background Canvas */
+.bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+main, header, footer {
+  position: relative;
+  z-index: 1;
+}
+
 /* Accessibility & Focus */
 a:focus-visible, button:focus-visible, input:focus-visible {
   outline: 2px solid var(--accent-cyan);
@@ -502,6 +519,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .project-card {
   background: var(--bg-card);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
   border-radius: 14px;
   padding: 28px;
@@ -509,12 +527,29 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   flex-direction: column;
   transition: all 0.25s ease;
   position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 242, 254, 0.5), rgba(56, 189, 248, 0.8), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .project-card:hover {
-  border-color: var(--border-glow);
+  border-color: rgba(0, 242, 254, 0.4);
   transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 24px rgba(0, 242, 254, 0.12);
+}
+
+.project-card:hover::before {
+  opacity: 1;
 }
 
 .project-card-top {
@@ -748,6 +783,90 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   border-radius: 14px;
   padding: 30px;
 }
+
+/* Floating Code/Config Card (ronit.config.sys) */
+.config-card {
+  background: #06080e;
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.6), 0 0 24px rgba(0, 242, 254, 0.08);
+  font-family: var(--font-mono);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.config-card:hover {
+  border-color: rgba(0, 242, 254, 0.45);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 242, 254, 0.15);
+  transform: translateY(-3px);
+}
+
+.config-card-header {
+  background: #0c0f17;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.config-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  background: rgba(0, 242, 254, 0.08);
+  padding: 3px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 242, 254, 0.2);
+}
+
+.config-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--accent-emerald);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 2px 7px;
+  border-radius: 20px;
+}
+
+.config-card-body {
+  padding: 16px 20px;
+  font-size: 0.81rem;
+  line-height: 1.65;
+  overflow-x: auto;
+}
+
+.config-card-body pre {
+  margin: 0;
+  font-family: var(--font-mono);
+}
+
+.code-line {
+  display: block;
+  white-space: pre;
+}
+
+.line-num {
+  color: #3b4252;
+  margin-right: 14px;
+  user-select: none;
+  display: inline-block;
+  width: 20px;
+  text-align: right;
+}
+
+.code-comment { color: #6272a4; font-style: italic; }
+.code-keyword { color: #ff79c6; font-weight: 700; }
+.code-def     { color: #50fa7b; }
+.code-prop    { color: #8be9fd; }
+.code-str     { color: #f1fa8c; }
+.code-num     { color: #bd93f9; font-weight: 700; }
+.code-bool    { color: #ffb86c; font-weight: 700; }
 
 .spec-box {
   background: #06080d;
