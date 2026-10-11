@@ -80,15 +80,17 @@ const COMMAND_RESPONSES = {
 <span class="term-dim">──────────────────────────────────────────────────────────────────────</span>
 <span class="term-green">✔ All test runs backed by real multi-core executions in Java 21 &amp; C.</span>`,
 
-  'aero-status': `⚡ <span class="term-cyan">AERO LINUX v1.4.0-SUPERNOVA STATUS</span>
+  'aero-status': `⚡ <span class="term-cyan">AERO LINUX v1.5.0-PULSAR STATUS</span>
 <span class="term-dim">──────────────────────────────────────────────────────────────────────</span>
  • Idle Footprint:  312 MB RAM (Cold Boot on AMD Ryzen 5 5600H)
- • Native Suite:    49 Native GTK3 developer applications (Zero Electron)
+ • Native Suite:    59 Native GTK3 developer applications (Zero Electron)
  • Memory Engine:   Dynamic in-memory zRAM ZSTD (eliminates SSD swap wear)
+ • Hypervisor:      Ephemeral KVM MicroVM sandboxes with auto-teardown
+ • Observability:   Kernel TraceFS & Socket Lifecycle Tracer
  • Releases:        Live bootable ISO &amp; Debian .deb packages available
  • Web Portal:      <a href="https://ronitgupta138.github.io/aero-linux/" target="_blank" style="color:#00f2fe;">https://ronitgupta138.github.io/aero-linux/</a>
 <span class="term-dim">──────────────────────────────────────────────────────────────────────</span>
-<span class="term-green">✔ 130/130 unit tests passing in multi-distro container CI.</span>`,
+<span class="term-green">✔ 133/133 unit tests passing in multi-distro container CI.</span>`,
 
   skills: `🛠️ <span class="term-cyan">TECHNICAL ARSENAL &amp; SYSTEMS STACK</span>
 <span class="term-dim">──────────────────────────────────────────────────────────────────────</span>
