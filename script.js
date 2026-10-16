@@ -279,17 +279,21 @@ function initKDTree() {
   }
 
   function resize() {
+    const dpr = window.devicePixelRatio || 1;
     const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width;
-    canvas.height = 220;
+    canvas.width = rect.width * dpr;
+    canvas.height = 220 * dpr;
+    ctx.resetTransform?.();
+    ctx.scale(dpr, dpr);
     render();
   }
 
   window.addEventListener('resize', resize);
 
   function render() {
-    const W = canvas.width;
-    const H = canvas.height;
+    const rect = canvas.getBoundingClientRect();
+    const W = rect.width;
+    const H = 220;
     ctx.clearRect(0, 0, W, H);
 
     // Subtle grid
