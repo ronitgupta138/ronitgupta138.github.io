@@ -4,7 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  const copyBtn = document.getElementById('copyEmailBtn') || document.getElementById('copyEmailLink');
+  const copyBtn = document.getElementById('copyEmailLink');
   const toast = document.getElementById('toast');
   const email = 'ronitgupta138@gmail.com';
 
