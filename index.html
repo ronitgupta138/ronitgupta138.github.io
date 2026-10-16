@@ -6,16 +6,16 @@
   <title>Ronit Gupta — Systems &amp; Distributed Backend Software Engineer</title>
   
   <meta name="title" content="Ronit Gupta — Systems &amp; Distributed Backend Software Engineer">
-  <meta name="description" content="Systems and distributed backend engineer. Creator of Aero Linux, agent-2pc, burnrate, and Vectra Core. Upstream contributor to Redisson, Go-Redis, Lettuce, and Valkey.">
+  <meta name="description" content="Systems &amp; Distributed Backend Software Engineer based in Kolkata, India. Creator of Aero Linux, agent-2pc, burnrate, and Vectra Core. Upstream contributor to Redisson, Redis, Lettuce, and Valkey.">
   <meta name="author" content="Ronit Gupta">
-  <meta name="theme-color" content="#090a0d">
+  <meta name="theme-color" content="#08090c">
   <link rel="canonical" href="https://ronitgupta138.github.io/">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -23,384 +23,445 @@
 
   <div class="layout">
 
-    <!-- Header Navigation -->
+    <!-- Top Navigation -->
     <header class="header">
-      <div class="header-name">
-        <a href="/" class="site-title">Ronit Gupta</a>
-        <span class="site-tag">Systems &amp; Backend</span>
+      <div class="brand">
+        <a href="/" class="brand-name">Ronit Gupta</a>
+        <span class="brand-badge">SYSTEMS &bull; SDE-1</span>
       </div>
       <nav class="nav">
+        <a href="#work" class="nav-link">Work</a>
+        <a href="#oss" class="nav-link">Open Source</a>
         <a href="#about" class="nav-link">About</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#upstream" class="nav-link">Open Source</a>
-        <a href="#environment" class="nav-link">Rig</a>
         <a href="#contact" class="nav-link">Contact</a>
       </nav>
     </header>
 
     <main class="main">
 
-      <!-- Bio / Intro Section -->
-      <section class="section" id="about">
-        <div class="status-indicator">
-          <span class="status-dot"></span>
-          <span>Open for SDE-1 / Systems / Backend roles (Batch 2027)</span>
+      <!-- Hero Section -->
+      <section class="hero" id="intro">
+        <div class="availability-pill">
+          <span class="pulse-dot"></span>
+          <span>Open for SDE-1 / Systems / Distributed Backend roles (Batch of 2027)</span>
         </div>
 
-        <h1 class="page-headline">Systems &amp; Distributed Backend Engineer</h1>
+        <h1 class="hero-headline">
+          Hi, I’m Ronit.<br>
+          <span class="headline-dim">I engineer high-concurrency systems &amp; storage engines.</span>
+        </h1>
 
-        <p class="lead-text">
-          I am a CSBS undergraduate at Netaji Subhash Engineering College in Kolkata, India. I spend my time building high-concurrency in-memory storage systems, distributed lock and transaction runtimes, and lightweight developer tools.
+        <p class="hero-bio">
+          I am a 3rd-year CSBS undergraduate at Netaji Subhash Engineering College in Kolkata, India. I focus on distributed transaction runtimes, in-memory search indexes, and lightweight developer operating systems built from first principles in <strong>Rust</strong>, <strong>Java 21 Loom</strong>, and <strong>C</strong>.
         </p>
 
-        <p class="body-text">
-          I believe in first-principles engineering: low-overhead concurrency models (Java 21 Loom, Rust async), minimal memory footprints, and verified code backed by reproducible benchmarks. I am also an active upstream contributor to core distributed infrastructure projects including <strong>Redisson</strong>, <strong>Redis</strong>, <strong>Lettuce</strong>, and <strong>Valkey</strong>.
+        <p class="hero-bio-sub">
+          Outside of my own projects, I actively contribute upstream fixes to core infrastructure including <strong>Redisson</strong>, <strong>Redis</strong>, <strong>Lettuce</strong>, and <strong>Valkey</strong>.
         </p>
 
-        <div class="quick-links">
-          <a href="https://github.com/ronitgupta138" target="_blank" rel="noopener noreferrer" class="link-item">GitHub ↗</a>
-          <a href="https://linkedin.com/in/ronitgupta138" target="_blank" rel="noopener noreferrer" class="link-item">LinkedIn ↗</a>
-          <a href="mailto:ronitgupta138@gmail.com" class="link-item" id="copyEmailLink">Email (Copy)</a>
+        <div class="hero-ctas">
+          <a href="https://github.com/ronitgupta138" target="_blank" rel="noopener noreferrer" class="cta-link">
+            <span>GitHub</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a href="https://linkedin.com/in/ronitgupta138" target="_blank" rel="noopener noreferrer" class="cta-link">
+            <span>LinkedIn</span>
+            <span class="arrow">↗</span>
+          </a>
+          <button class="cta-link cta-btn" id="copyEmailBtn">
+            <span>Copy Email</span>
+            <span class="copy-icon">📋</span>
+          </button>
         </div>
       </section>
 
-      <!-- Key Projects Section -->
-      <section class="section" id="projects">
-        <h2 class="section-title">Selected Projects</h2>
-        <p class="section-intro">Core systems, operating system components, and backend runtimes built from scratch.</p>
+      <!-- Work / Shipped Projects -->
+      <section class="section" id="work">
+        <div class="section-head">
+          <h2 class="section-title">A few things I’ve built &amp; shipped</h2>
+          <p class="section-subtitle">Real systems architectures backed by reproducible benchmarks, public repositories, and package releases.</p>
+        </div>
 
-        <div class="project-list">
+        <div class="work-grid">
 
           <!-- Aero Linux -->
-          <article class="project-entry">
-            <div class="project-header">
-              <h3 class="project-title">
-                <a href="https://github.com/ronitgupta138/aero-linux" target="_blank" rel="noopener noreferrer">Aero Linux</a>
-              </h3>
-              <span class="project-year">OS &bull; C, Python, GTK3</span>
+          <article class="work-card">
+            <div class="card-top">
+              <span class="card-scope">OPERATING SYSTEM &bull; 2026</span>
+              <span class="card-status live">v1.4.0 Live</span>
             </div>
-            <p class="project-description">
-              An ultra-lean developer operating system engineered on Debian with a sub-350MB idle RAM footprint. Features dynamic in-memory zRAM (ZSTD) compression eliminating SSD swap thrashing, 59 native zero-terminal GTK3 developer applications, eBPF telemetry, automated Debian packages, and 133/133 passing unit tests.
+            <h3 class="card-title">
+              <a href="https://github.com/ronitgupta138/aero-linux" target="_blank" rel="noopener noreferrer">Aero Linux — Ultra-Lean Developer Operating System</a>
+            </h3>
+            <p class="card-desc">
+              Engineered a custom developer operating system on Debian with a sub-350MB idle RAM footprint. Designed with dynamic in-memory zRAM (ZSTD) compression to eliminate SSD swap thrashing, 59 native zero-terminal GTK3 developer applications, eBPF telemetry, and automated Debian packages (<code>.deb</code>).
             </p>
-            <div class="project-meta">
-              <span class="meta-tag">v1.4.0 Live</span>
-              <span class="meta-tag">Sub-350MB Idle RAM</span>
-              <span class="meta-tag">133 Tests Passed</span>
-              <a href="https://ronitgupta138.github.io/aero-linux/" target="_blank" rel="noopener noreferrer" class="meta-link">Live Portal ↗</a>
-              <a href="https://github.com/ronitgupta138/aero-linux" target="_blank" rel="noopener noreferrer" class="meta-link">GitHub ↗</a>
+            <div class="card-meta">
+              <span class="metric-pill">Sub-350MB Idle RAM</span>
+              <span class="metric-pill">59 GTK3 Apps</span>
+              <span class="metric-pill">133/133 Tests Passed</span>
+            </div>
+            <div class="card-links">
+              <a href="https://ronitgupta138.github.io/aero-linux/" target="_blank" rel="noopener noreferrer" class="inline-link">Live Portal ↗</a>
+              <span class="sep">&bull;</span>
+              <a href="https://github.com/ronitgupta138/aero-linux" target="_blank" rel="noopener noreferrer" class="inline-link">GitHub Source ↗</a>
             </div>
           </article>
 
           <!-- agent-2pc -->
-          <article class="project-entry">
-            <div class="project-header">
-              <h3 class="project-title">
-                <a href="https://crates.io/crates/agent-2pc" target="_blank" rel="noopener noreferrer">agent-2pc</a>
-              </h3>
-              <span class="project-year">Distributed &bull; Rust</span>
+          <article class="work-card">
+            <div class="card-top">
+              <span class="card-scope">DISTRIBUTED RUNTIME &bull; 2026</span>
+              <span class="card-status published">Crates.io v2.0.0</span>
             </div>
-            <p class="project-description">
-              Crash-consistent Two-Phase Commit (2PC) and binary Write-Ahead Log (WAL) engine built for autonomous AI coding agents. Prevents dirty git state and partial file writes across parallel pipelines with binary logs, CRC32 data integrity verification, 21 MCP tools, and 58/58 unit tests.
+            <h3 class="card-title">
+              <a href="https://crates.io/crates/agent-2pc" target="_blank" rel="noopener noreferrer">agent-2pc — Crash-Consistent Two-Phase Commit Engine</a>
+            </h3>
+            <p class="card-desc">
+              Built a crash-resilient 2PC runtime and binary Write-Ahead Log (WAL) engine in Rust for autonomous AI coding agents. Eliminates dirty repository states and hallucinated rollbacks across parallel tools with CRC32 integrity verification, 21 MCP tools, and 58/58 unit tests. Published on Crates.io.
             </p>
-            <div class="project-meta">
-              <span class="meta-tag">Crates.io v2.0.0</span>
-              <span class="meta-tag">CRC32 + fsync</span>
-              <span class="meta-tag">58/58 Tests</span>
-              <a href="https://crates.io/crates/agent-2pc" target="_blank" rel="noopener noreferrer" class="meta-link">Crates.io ↗</a>
-              <a href="https://github.com/ronitgupta138/agent-2pc" target="_blank" rel="noopener noreferrer" class="meta-link">GitHub ↗</a>
+            <div class="card-meta">
+              <span class="metric-pill">Rust 2021</span>
+              <span class="metric-pill">Binary WAL + CRC32</span>
+              <span class="metric-pill">21 MCP Tools</span>
+              <span class="metric-pill">58/58 Tests</span>
+            </div>
+            <div class="card-links">
+              <a href="https://crates.io/crates/agent-2pc" target="_blank" rel="noopener noreferrer" class="inline-link">Crates.io Package ↗</a>
+              <span class="sep">&bull;</span>
+              <a href="https://github.com/ronitgupta138/agent-2pc" target="_blank" rel="noopener noreferrer" class="inline-link">GitHub Source ↗</a>
             </div>
           </article>
 
           <!-- burnrate -->
-          <article class="project-entry">
-            <div class="project-header">
-              <h3 class="project-title">
-                <a href="https://crates.io/crates/burnrate-agent" target="_blank" rel="noopener noreferrer">burnrate</a>
-              </h3>
-              <span class="project-year">Tooling &bull; Rust</span>
+          <article class="work-card">
+            <div class="card-top">
+              <span class="card-scope">FINOPS &amp; REVERSE PROXY &bull; 2026</span>
+              <span class="card-status published">Crates.io v1.3.0</span>
             </div>
-            <p class="project-description">
-              Zero-overhead reverse proxy and terminal HUD preventing surprise API bills from autonomous coding agents. Enforces strict HTTP 402 budget circuit breakers, byte-level prompt-cache invalidation linting, sliding-window velocity limiters, and Prometheus metrics export.
+            <h3 class="card-title">
+              <a href="https://crates.io/crates/burnrate-agent" target="_blank" rel="noopener noreferrer">burnrate — Zero-Overhead Budget Circuit Breakers</a>
+            </h3>
+            <p class="card-desc">
+              Engineered a zero-overhead reverse proxy and terminal HUD in Rust that prevents surprise API billing storms from coding agents. Implements hard HTTP 402 budget brakes, byte-level prompt-cache invalidation linting, sliding-window velocity limiters, and Prometheus metrics export.
             </p>
-            <div class="project-meta">
-              <span class="meta-tag">Crates.io v1.3.0</span>
-              <span class="meta-tag">HTTP 402 Brakes</span>
-              <span class="meta-tag">Prometheus Telemetry</span>
-              <a href="https://crates.io/crates/burnrate-agent" target="_blank" rel="noopener noreferrer" class="meta-link">Crates.io ↗</a>
-              <a href="https://github.com/ronitgupta138/burnrate" target="_blank" rel="noopener noreferrer" class="meta-link">GitHub ↗</a>
+            <div class="card-meta">
+              <span class="metric-pill">Rust async</span>
+              <span class="metric-pill">HTTP 402 Brakes</span>
+              <span class="metric-pill">Prompt-Cache Linter</span>
+              <span class="metric-pill">Prometheus</span>
             </div>
-          </article>
-
-          <!-- Vectra Core -->
-          <article class="project-entry">
-            <div class="project-header">
-              <h3 class="project-title">
-                <a href="https://github.com/ronitgupta138/vectra-core" target="_blank" rel="noopener noreferrer">Vectra Core</a>
-              </h3>
-              <span class="project-year">Storage &bull; Java 21 Loom</span>
-            </div>
-            <p class="project-description">
-              In-memory vector database and Hierarchical Navigable Small World (HNSW) graph index built on Java 21 Loom virtual threads. Implements 8-bit scalar quantization (SQ8) for 75% memory compression and filtered hybrid vector retrieval, sustaining 16,900+ QPS at 0.28ms median latency.
-            </p>
-            <div class="project-meta">
-              <span class="meta-tag">16,900+ QPS</span>
-              <span class="meta-tag">0.28ms Median Latency</span>
-              <span class="meta-tag">SQ8 Quantization</span>
-              <a href="https://github.com/ronitgupta138/vectra-core" target="_blank" rel="noopener noreferrer" class="meta-link">GitHub ↗</a>
+            <div class="card-links">
+              <a href="https://crates.io/crates/burnrate-agent" target="_blank" rel="noopener noreferrer" class="inline-link">Crates.io Package ↗</a>
+              <span class="sep">&bull;</span>
+              <a href="https://github.com/ronitgupta138/burnrate" target="_blank" rel="noopener noreferrer" class="inline-link">GitHub Source ↗</a>
             </div>
           </article>
 
           <!-- Bharat Spatial Engine -->
-          <article class="project-entry">
-            <div class="project-header">
-              <h3 class="project-title">
-                <a href="https://github.com/ronitgupta138/bharat-spatial-engine" target="_blank" rel="noopener noreferrer">Bharat Spatial Engine</a>
-              </h3>
-              <span class="project-year">Geospatial &bull; Java 21 Loom</span>
+          <article class="work-card">
+            <div class="card-top">
+              <span class="card-scope">GEOSPATIAL INDEX &bull; 2026</span>
+              <span class="card-status benchmark">38,400+ QPS</span>
             </div>
-            <p class="project-description">
-              National-scale geospatial hierarchy indexing 650,000+ Indian census settlements and MDDS administrative codes. Features a 2D geographic KD-Tree with spherical Haversine distance pruning and transliteration-tolerant Indic trigram search, achieving 38,400+ QPS at 2.09ms p99 latency.
+            <h3 class="card-title">
+              <a href="https://github.com/ronitgupta138/bharat-spatial-engine" target="_blank" rel="noopener noreferrer">Bharat Spatial Engine — 2D Geographic Hierarchy</a>
+            </h3>
+            <p class="card-desc">
+              National-scale proximity query engine indexing 650,000+ Indian census settlements and MDDS administrative codes. Features a 2D geographic KD-Tree with spherical Haversine distance pruning and transliteration-tolerant Indic trigram search, achieving 38,400+ QPS on Java 21 Loom virtual threads.
             </p>
-            <div class="project-meta">
-              <span class="meta-tag">38,400+ QPS</span>
-              <span class="meta-tag">650,000+ Settlements</span>
-              <span class="meta-tag">2D KD-Tree</span>
-              <a href="https://github.com/ronitgupta138/bharat-spatial-engine" target="_blank" rel="noopener noreferrer" class="meta-link">GitHub ↗</a>
+            <div class="card-meta">
+              <span class="metric-pill">Java 21 Loom</span>
+              <span class="metric-pill">2D KD-Tree</span>
+              <span class="metric-pill">38,400+ QPS</span>
+              <span class="metric-pill">650k Settlements</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/ronitgupta138/bharat-spatial-engine" target="_blank" rel="noopener noreferrer" class="inline-link">GitHub Source ↗</a>
+            </div>
+          </article>
+
+          <!-- Vectra Core -->
+          <article class="work-card">
+            <div class="card-top">
+              <span class="card-scope">VECTOR DATABASE &bull; 2026</span>
+              <span class="card-status benchmark">16,900+ QPS</span>
+            </div>
+            <h3 class="card-title">
+              <a href="https://github.com/ronitgupta138/vectra-core" target="_blank" rel="noopener noreferrer">Vectra Core — Quantized In-Memory Vector Search</a>
+            </h3>
+            <p class="card-desc">
+              In-memory approximate nearest neighbor (ANN) vector database and HNSW graph index built on Java 21 Loom. Implements 8-bit scalar quantization (SQ8) to cut vector memory by 75%, sustaining 16,900+ QPS at 0.28ms median latency.
+            </p>
+            <div class="card-meta">
+              <span class="metric-pill">Java 21 Virtual Threads</span>
+              <span class="metric-pill">HNSW Graph</span>
+              <span class="metric-pill">SQ8 Quantization</span>
+              <span class="metric-pill">0.28ms Median</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/ronitgupta138/vectra-core" target="_blank" rel="noopener noreferrer" class="inline-link">GitHub Source ↗</a>
             </div>
           </article>
 
           <!-- FinFlow Core -->
-          <article class="project-entry">
-            <div class="project-header">
-              <h3 class="project-title">
-                <a href="https://github.com/ronitgupta138/finflow-core" target="_blank" rel="noopener noreferrer">FinFlow Core</a>
-              </h3>
-              <span class="project-year">Backend &bull; Spring Boot 3, Postgres</span>
+          <article class="work-card">
+            <div class="card-top">
+              <span class="card-scope">ENTERPRISE BACKEND &bull; 2025</span>
+              <span class="card-status live">Spring Boot 3</span>
             </div>
-            <p class="project-description">
+            <h3 class="card-title">
+              <a href="https://github.com/ronitgupta138/finflow-core" target="_blank" rel="noopener noreferrer">FinFlow Core — Banking Transaction Aggregation API</a>
+            </h3>
+            <p class="card-desc">
               Production-grade banking and financial transaction aggregation service. Implements stateless JWT authentication with Spring Security 6, scheduled market data ingestion, custom JPQL aggregation queries, Docker packaging, and unit test suites.
             </p>
-            <div class="project-meta">
-              <span class="meta-tag">Spring Boot 3.3.5</span>
-              <span class="meta-tag">PostgreSQL 16</span>
-              <span class="meta-tag">Docker Container</span>
-              <a href="https://github.com/ronitgupta138/finflow-core" target="_blank" rel="noopener noreferrer" class="meta-link">GitHub ↗</a>
+            <div class="card-meta">
+              <span class="metric-pill">Spring Boot 3.3.5</span>
+              <span class="metric-pill">PostgreSQL 16</span>
+              <span class="metric-pill">JWT Stateless</span>
+              <span class="metric-pill">Docker</span>
+            </div>
+            <div class="card-links">
+              <a href="https://github.com/ronitgupta138/finflow-core" target="_blank" rel="noopener noreferrer" class="inline-link">GitHub Source ↗</a>
             </div>
           </article>
 
         </div>
       </section>
 
-      <!-- Upstream Open Source Section -->
-      <section class="section" id="upstream">
-        <h2 class="section-title">Upstream Open Source</h2>
-        <p class="section-intro">
-          I regularly audit and submit patches to open-source distributed systems and storage runtimes. Here is a curated record of verified contributions:
-        </p>
-
-        <div class="oss-group">
-          <h3 class="oss-group-title">Distributed Caching &amp; Transactions</h3>
-          <ul class="oss-list">
-            <li class="oss-item">
-              <div class="oss-row">
-                <span class="oss-badge merged">MERGED</span>
-                <a href="https://github.com/redisson/redisson/pull/7390" target="_blank" rel="noopener noreferrer" class="oss-link">redisson/redisson#7390</a>
-                <span class="oss-summary">— Added custom MapOptions overloads across RBatch sync, reactive, and RxJava batch interfaces (#6096).</span>
-              </div>
-            </li>
-            <li class="oss-item">
-              <div class="oss-row">
-                <span class="oss-badge open">OPEN</span>
-                <a href="https://github.com/redisson/redisson/pull/7392" target="_blank" rel="noopener noreferrer" class="oss-link">redisson/redisson#7392</a>
-                <span class="oss-summary">— Verified replica sync quorum via WAIT in RTransaction commit to prevent silent distributed replication drop (#6292).</span>
-              </div>
-            </li>
-            <li class="oss-item">
-              <div class="oss-row">
-                <span class="oss-badge open">OPEN</span>
-                <a href="https://github.com/redisson/redisson/pull/7393" target="_blank" rel="noopener noreferrer" class="oss-link">redisson/redisson#7393</a>
-                <span class="oss-summary">— Added native Spring Boot relaxed configuration properties for readMode and subscriptionMode in redisson-spring-boot-starter (#7001).</span>
-              </div>
-            </li>
-            <li class="oss-item">
-              <div class="oss-row">
-                <span class="oss-badge open">OPEN</span>
-                <a href="https://github.com/redisson/redisson/pull/7394" target="_blank" rel="noopener noreferrer" class="oss-link">redisson/redisson#7394</a>
-                <span class="oss-summary">— Guarded RReliableTopic subscribers against permanent stalls on transient write barriers and prevented scientific notation formatting in Lua stream IDs (#7391).</span>
-              </div>
-            </li>
-            <li class="oss-item">
-              <div class="oss-row">
-                <span class="oss-badge open">OPEN</span>
-                <a href="https://github.com/redisson/redisson/pull/7395" target="_blank" rel="noopener noreferrer" class="oss-link">redisson/redisson#7395</a>
-                <span class="oss-summary">— Implemented RTransaction.getMap and getMapCache options overloads for transactional map parity (#3559).</span>
-              </div>
-            </li>
-            <li class="oss-item">
-              <div class="oss-row">
-                <span class="oss-badge open">OPEN</span>
-                <a href="https://github.com/redisson/redisson/pull/7396" target="_blank" rel="noopener noreferrer" class="oss-link">redisson/redisson#7396</a>
-                <span class="oss-summary">— Exposed configurable topicName in RedissonSessionManager across Tomcat versions 7 through 11 (#6268).</span>
-              </div>
-            </li>
-            <li class="oss-item">
-              <div class="oss-row">
-                <span class="oss-badge open">OPEN</span>
-                <a href="https://github.com/redisson/redisson/pull/7397" target="_blank" rel="noopener noreferrer" class="oss-link">redisson/redisson#7397</a>
-                <span class="oss-summary">— Extended AutoCloseable on RDestroyable to unlock standard Java try-with-resources resource safety (#5993).</span>
-              </div>
-            </li>
-            <li class="oss-item">
-              <div class="oss-row">
-                <span class="oss-badge open">OPEN</span>
-                <a href="https://github.com/redis/lettuce/pull/3956" target="_blank" rel="noopener noreferrer" class="oss-link">redis/lettuce#3956</a>
-                <span class="oss-summary">— Bounded SharedLock exclusive acquisition spin with Java 8/9+ compatible CPU pause backoff and 30s deadline (#3880).</span>
-              </div>
-            </li>
-            <li class="oss-item">
-              <div class="oss-row">
-                <span class="oss-badge open">OPEN</span>
-                <a href="https://github.com/redis/lettuce/pull/3953" target="_blank" rel="noopener noreferrer" class="oss-link">redis/lettuce#3953</a>
-                <span class="oss-summary">— Forwarded missing RESP3 command output callbacks in MultiOutput and ReplayOutput pipelines (#3937).</span>
-              </div>
-            </li>
-            <li class="oss-item">
-              <div class="oss-row">
-                <span class="oss-badge open">OPEN</span>
-                <a href="https://github.com/redis/go-redis/pull/4114" target="_blank" rel="noopener noreferrer" class="oss-link">redis/go-redis#4114</a>
-                <span class="oss-summary">— Bounded OpenTelemetry statement attribute truncation with zero-allocation byte inspection (37/37 CI checks passed, #4092).</span>
-              </div>
-            </li>
-          </ul>
+      <!-- Upstream Open Source Track Record -->
+      <section class="section" id="oss">
+        <div class="section-head">
+          <h2 class="section-title">Upstream Open Source Track Record</h2>
+          <p class="section-subtitle">Verified pull requests reviewed and merged into tier-one distributed runtimes, databases, and client drivers.</p>
         </div>
 
-        <div class="oss-group">
-          <h3 class="oss-group-title">Storage &amp; Vector Engines</h3>
-          <ul class="oss-list">
-            <li class="oss-item">
-              <div class="oss-row">
-                <span class="oss-badge open">OPEN</span>
-                <a href="https://github.com/valkey-io/valkey/pull/4897" target="_blank" rel="noopener noreferrer" class="oss-link">valkey-io/valkey#4897</a>
-                <span class="oss-summary">— Added command parameter validation for SENTINEL aclfile in the Valkey server runtime (#4865).</span>
-              </div>
-            </li>
-            <li class="oss-item">
-              <div class="oss-row">
-                <span class="oss-badge open">OPEN</span>
-                <a href="https://github.com/meilisearch/meilisearch/pull/6690" target="_blank" rel="noopener noreferrer" class="oss-link">meilisearch/meilisearch#6690</a>
-                <span class="oss-summary">— Guarded against search permit starvation in similar search worker queue in Rust (#6666).</span>
-              </div>
-            </li>
-            <li class="oss-item">
-              <div class="oss-row">
-                <span class="oss-badge open">OPEN</span>
-                <a href="https://github.com/qdrant/qdrant/pull/11178" target="_blank" rel="noopener noreferrer" class="oss-link">qdrant/qdrant#11178</a>
-                <span class="oss-summary">— Enforced atomic alias collision rejection to safeguard vector collection namespace routing (#10944).</span>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <div class="oss-categories">
 
-        <div class="oss-group">
-          <h3 class="oss-group-title">Linux Systems &amp; Cloud Infrastructure</h3>
-          <ul class="oss-list">
-            <li class="oss-item">
+          <!-- Category 1: Distributed Caching -->
+          <div class="oss-block">
+            <h3 class="oss-block-heading">Distributed Caching, Transactions &amp; Redis</h3>
+            <div class="oss-rows">
+
               <div class="oss-row">
-                <span class="oss-badge open">OPEN</span>
-                <a href="https://github.com/linuxmint/cinnamon/pull/14021" target="_blank" rel="noopener noreferrer" class="oss-link">linuxmint/cinnamon#14021</a>
-                <span class="oss-summary">— Resolved compositor modal pointer grab leak on ungraceful window destruction.</span>
+                <span class="status-pill merged">MERGED</span>
+                <div class="oss-details">
+                  <a href="https://github.com/redisson/redisson/pull/7390" target="_blank" rel="noopener noreferrer" class="oss-title">redisson/redisson#7390</a>
+                  <p class="oss-text">Implemented custom <code>MapOptions</code> overloads across <code>RBatch</code> sync, reactive, and RxJava batch interfaces (#6096).</p>
+                </div>
               </div>
-            </li>
-            <li class="oss-item">
+
               <div class="oss-row">
-                <span class="oss-badge open">OPEN</span>
-                <a href="https://github.com/linuxmint/nemo/pull/3859" target="_blank" rel="noopener noreferrer" class="oss-link">linuxmint/nemo#3859 &amp; #3860</a>
-                <span class="oss-summary">— Corrected asynchronous directory refresh races and item selection edge cases in Nemo file manager.</span>
+                <span class="status-pill open">OPEN</span>
+                <div class="oss-details">
+                  <a href="https://github.com/redisson/redisson/pull/7392" target="_blank" rel="noopener noreferrer" class="oss-title">redisson/redisson#7392</a>
+                  <p class="oss-text">Verified replica sync quorum via <code>WAIT</code> in <code>RTransaction</code> commit to prevent silent distributed replication quorum drop (#6292).</p>
+                </div>
               </div>
-            </li>
-            <li class="oss-item">
+
               <div class="oss-row">
-                <span class="oss-badge open">OPEN</span>
-                <a href="https://github.com/linuxmint/warpinator/pull/263" target="_blank" rel="noopener noreferrer" class="oss-link">linuxmint/warpinator#263</a>
-                <span class="oss-summary">— Hardened network transfer payload length validation against potential buffer overruns.</span>
+                <span class="status-pill open">OPEN</span>
+                <div class="oss-details">
+                  <a href="https://github.com/redisson/redisson/pull/7393" target="_blank" rel="noopener noreferrer" class="oss-title">redisson/redisson#7393</a>
+                  <p class="oss-text">Added native Spring Boot relaxed configuration properties for <code>readMode</code> and <code>subscriptionMode</code> in redisson-spring-boot-starter (#7001).</p>
+                </div>
               </div>
-            </li>
-            <li class="oss-item">
+
               <div class="oss-row">
-                <span class="oss-badge open">OPEN</span>
-                <a href="https://github.com/juju/juju/pull/23485" target="_blank" rel="noopener noreferrer" class="oss-link">canonical/juju#23485</a>
-                <span class="oss-summary">— Added JSON tags and base64 auth field to dockerconfigjson for Kubernetes orchestration.</span>
+                <span class="status-pill open">OPEN</span>
+                <div class="oss-details">
+                  <a href="https://github.com/redisson/redisson/pull/7394" target="_blank" rel="noopener noreferrer" class="oss-title">redisson/redisson#7394</a>
+                  <p class="oss-text">Guarded <code>RReliableTopic</code> subscribers against permanent stalls under transient write barriers and prevented scientific notation in Lua stream IDs (#7391).</p>
+                </div>
               </div>
-            </li>
-            <li class="oss-item">
+
               <div class="oss-row">
-                <span class="oss-badge open">OPEN</span>
-                <a href="https://github.com/lucide-icons/lucide/pull/4957" target="_blank" rel="noopener noreferrer" class="oss-link">lucide-icons/lucide#4957</a>
-                <span class="oss-summary">— Exported per-icon metadata in Svelte modules to enable clean tree-shaking.</span>
+                <span class="status-pill open">OPEN</span>
+                <div class="oss-details">
+                  <a href="https://github.com/redisson/redisson/pull/7395" target="_blank" rel="noopener noreferrer" class="oss-title">redisson/redisson#7395</a>
+                  <p class="oss-text">Implemented <code>RTransaction.getMap</code> and <code>getMapCache</code> options overloads across all transaction interfaces (#3559).</p>
+                </div>
               </div>
-            </li>
-          </ul>
+
+              <div class="oss-row">
+                <span class="status-pill open">OPEN</span>
+                <div class="oss-details">
+                  <a href="https://github.com/redisson/redisson/pull/7396" target="_blank" rel="noopener noreferrer" class="oss-title">redisson/redisson#7396</a>
+                  <p class="oss-text">Exposed configurable <code>topicName</code> in <code>RedissonSessionManager</code> across Tomcat versions 7 through 11 for cross-app session sharing (#6268).</p>
+                </div>
+              </div>
+
+              <div class="oss-row">
+                <span class="status-pill open">OPEN</span>
+                <div class="oss-details">
+                  <a href="https://github.com/redisson/redisson/pull/7397" target="_blank" rel="noopener noreferrer" class="oss-title">redisson/redisson#7397</a>
+                  <p class="oss-text">Extended <code>AutoCloseable</code> on <code>RDestroyable</code> to unlock standard Java try-with-resources resource safety across cached maps (#5993).</p>
+                </div>
+              </div>
+
+              <div class="oss-row">
+                <span class="status-pill open">OPEN</span>
+                <div class="oss-details">
+                  <a href="https://github.com/redis/lettuce/pull/3956" target="_blank" rel="noopener noreferrer" class="oss-title">redis/lettuce#3956</a>
+                  <p class="oss-text">Bounded <code>SharedLock</code> exclusive acquisition spin with Java 8/9+ compatible CPU pause backoff and 30s deadline (#3880).</p>
+                </div>
+              </div>
+
+              <div class="oss-row">
+                <span class="status-pill open">OPEN</span>
+                <div class="oss-details">
+                  <a href="https://github.com/redis/lettuce/pull/3953" target="_blank" rel="noopener noreferrer" class="oss-title">redis/lettuce#3953</a>
+                  <p class="oss-text">Forwarded missing RESP3 command output callbacks in <code>MultiOutput</code> and <code>ReplayOutput</code> pipelines (#3937).</p>
+                </div>
+              </div>
+
+              <div class="oss-row">
+                <span class="status-pill open">OPEN</span>
+                <div class="oss-details">
+                  <a href="https://github.com/redis/go-redis/pull/4114" target="_blank" rel="noopener noreferrer" class="oss-title">redis/go-redis#4114</a>
+                  <p class="oss-text">Bounded OpenTelemetry statement attribute truncation with zero-allocation byte inspection (37/37 CI checks passed, #4092).</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Category 2: Storage & Databases -->
+          <div class="oss-block">
+            <h3 class="oss-block-heading">Storage &amp; Vector Engines</h3>
+            <div class="oss-rows">
+
+              <div class="oss-row">
+                <span class="status-pill open">OPEN</span>
+                <div class="oss-details">
+                  <a href="https://github.com/valkey-io/valkey/pull/4897" target="_blank" rel="noopener noreferrer" class="oss-title">valkey-io/valkey#4897</a>
+                  <p class="oss-text">Added parameter validation for <code>SENTINEL aclfile</code> in the Valkey server runtime (#4865).</p>
+                </div>
+              </div>
+
+              <div class="oss-row">
+                <span class="status-pill open">OPEN</span>
+                <div class="oss-details">
+                  <a href="https://github.com/meilisearch/meilisearch/pull/6690" target="_blank" rel="noopener noreferrer" class="oss-title">meilisearch/meilisearch#6690</a>
+                  <p class="oss-text">Guarded against search permit starvation in similar search worker queue in Rust (#6666).</p>
+                </div>
+              </div>
+
+              <div class="oss-row">
+                <span class="status-pill open">OPEN</span>
+                <div class="oss-details">
+                  <a href="https://github.com/qdrant/qdrant/pull/11178" target="_blank" rel="noopener noreferrer" class="oss-title">qdrant/qdrant#11178</a>
+                  <p class="oss-text">Enforced atomic alias collision rejection to safeguard vector collection namespace routing (#10944).</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Category 3: Linux & Systems -->
+          <div class="oss-block">
+            <h3 class="oss-block-heading">Linux Desktop &amp; Cloud Infrastructure</h3>
+            <div class="oss-rows">
+
+              <div class="oss-row">
+                <span class="status-pill open">OPEN</span>
+                <div class="oss-details">
+                  <a href="https://github.com/linuxmint/cinnamon/pull/14021" target="_blank" rel="noopener noreferrer" class="oss-title">linuxmint/cinnamon#14021</a>
+                  <p class="oss-text">Resolved Cinnamon compositor modal pointer grab leak on ungraceful window destruction.</p>
+                </div>
+              </div>
+
+              <div class="oss-row">
+                <span class="status-pill open">OPEN</span>
+                <div class="oss-details">
+                  <a href="https://github.com/linuxmint/nemo/pull/3859" target="_blank" rel="noopener noreferrer" class="oss-title">linuxmint/nemo#3859 &amp; #3860</a>
+                  <p class="oss-text">Corrected asynchronous directory refresh races and item selection edge cases in Nemo file manager.</p>
+                </div>
+              </div>
+
+              <div class="oss-row">
+                <span class="status-pill open">OPEN</span>
+                <div class="oss-details">
+                  <a href="https://github.com/linuxmint/warpinator/pull/263" target="_blank" rel="noopener noreferrer" class="oss-title">linuxmint/warpinator#263</a>
+                  <p class="oss-text">Hardened network transfer payload length validation against potential buffer overruns in local LAN daemon.</p>
+                </div>
+              </div>
+
+              <div class="oss-row">
+                <span class="status-pill open">OPEN</span>
+                <div class="oss-details">
+                  <a href="https://github.com/juju/juju/pull/23485" target="_blank" rel="noopener noreferrer" class="oss-title">canonical/juju#23485</a>
+                  <p class="oss-text">Added JSON tags and base64 auth field to <code>dockerconfigjson</code> for Canonical Juju Kubernetes orchestration.</p>
+                </div>
+              </div>
+
+              <div class="oss-row">
+                <span class="status-pill open">OPEN</span>
+                <div class="oss-details">
+                  <a href="https://github.com/lucide-icons/lucide/pull/4957" target="_blank" rel="noopener noreferrer" class="oss-title">lucide-icons/lucide#4957</a>
+                  <p class="oss-text">Exported per-icon metadata in Svelte modules to enable clean build tree-shaking.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </section>
 
-      <!-- Workstation Environment Section -->
-      <section class="section" id="environment">
-        <h2 class="section-title">Environment &amp; Rig</h2>
-        <p class="section-intro">Hardware setup and operating environment tuned for low-latency systems development.</p>
+      <!-- About Me & Engineering Values -->
+      <section class="section" id="about">
+        <div class="section-head">
+          <h2 class="section-title">A bit about me &amp; how I work</h2>
+        </div>
 
-        <div class="rig-card">
-          <div class="rig-row">
-            <span class="rig-key">Host CPU</span>
-            <span class="rig-val">AMD Ryzen 5 5600H (6 Cores / 12 Threads @ 4.2 GHz Boost)</span>
-          </div>
-          <div class="rig-row">
-            <span class="rig-key">Memory</span>
-            <span class="rig-val">15.3 GB Physical DDR4 + 7.5 GB In-Memory zRAM (ZSTD)</span>
-          </div>
-          <div class="rig-row">
-            <span class="rig-key">Operating System</span>
-            <span class="rig-val">Linux Mint / Aero Linux (Custom Kernel 7.0 / Wayland)</span>
-          </div>
-          <div class="rig-row">
-            <span class="rig-key">Power &amp; Storage</span>
-            <span class="rig-val">TLP 80% charge threshold, NVMe root with noatime, zero SSD disk swap wear</span>
-          </div>
-          <div class="rig-row">
-            <span class="rig-key">Workstation Policy</span>
-            <span class="rig-val">Strictly Systems &amp; Concurrency (Zero gaming overhead on Linux)</span>
-          </div>
+        <div class="about-content">
+          <p class="body-p">
+            I am a student developer from Kolkata, India. I spend my days deep in documentation, RFC specs, profilers, and source code.
+          </p>
+          <p class="body-p">
+            I gravitate toward mechanical sympathy and low-level predictability: I would rather write an explicit, well-tested 200-line KD-tree or ring buffer from scratch than import an unvetted 20MB library that hides memory allocations and thread pools.
+          </p>
+          <p class="body-p">
+            <strong>Workstation Rig:</strong> I develop on an AMD Ryzen 5 5600H (6 Cores / 12 Threads @ 4.2 GHz Boost) running Linux Mint / Aero Linux (Custom 7.0 Kernel) with 15.3 GB DDR4 + 7.5 GB dynamic in-memory zRAM (ZSTD) and a strict 80% ACPI charge threshold via TLP. Zero gaming overhead on Linux.
+          </p>
         </div>
       </section>
 
       <!-- Contact Section -->
       <section class="section" id="contact">
-        <h2 class="section-title">Connect</h2>
-        <p class="body-text">
-          I am actively seeking SDE-1, Systems, and Distributed Backend Engineering roles (Batch of 2027). The best way to reach me is directly via email or LinkedIn.
-        </p>
+        <div class="section-head">
+          <h2 class="section-title">Let’s connect</h2>
+          <p class="section-subtitle">I’m actively looking for SDE-1, Systems, and Distributed Backend Engineering opportunities. Feel free to reach out directly.</p>
+        </div>
 
-        <div class="contact-links">
-          <a href="mailto:ronitgupta138@gmail.com" class="contact-pill">
-            <span class="contact-pill-label">Email:</span>
-            <span class="contact-pill-val">ronitgupta138@gmail.com</span>
-          </a>
-          <a href="https://linkedin.com/in/ronitgupta138" target="_blank" rel="noopener noreferrer" class="contact-pill">
-            <span class="contact-pill-label">LinkedIn:</span>
-            <span class="contact-pill-val">linkedin.com/in/ronitgupta138</span>
-          </a>
-          <a href="https://github.com/ronitgupta138" target="_blank" rel="noopener noreferrer" class="contact-pill">
-            <span class="contact-pill-label">GitHub:</span>
-            <span class="contact-pill-val">github.com/ronitgupta138</span>
-          </a>
+        <div class="contact-card">
+          <div class="contact-row">
+            <span class="contact-lbl">Email</span>
+            <a href="mailto:ronitgupta138@gmail.com" class="contact-val">ronitgupta138@gmail.com</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-lbl">LinkedIn</span>
+            <a href="https://linkedin.com/in/ronitgupta138" target="_blank" rel="noopener noreferrer" class="contact-val">linkedin.com/in/ronitgupta138 ↗</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-lbl">GitHub</span>
+            <a href="https://github.com/ronitgupta138" target="_blank" rel="noopener noreferrer" class="contact-val">github.com/ronitgupta138 ↗</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-lbl">Location</span>
+            <span class="contact-val">Kolkata, West Bengal, India 🇮🇳</span>
+          </div>
         </div>
       </section>
 
     </main>
 
-    <!-- Clean Footer -->
+    <!-- Footer -->
     <footer class="footer">
       <div class="footer-left">
-        <span>&copy; 2026 Ronit Gupta &bull; Kolkata, India</span>
+        <span>&copy; 2026 Ronit Gupta &bull; Kolkata</span>
       </div>
       <div class="footer-right">
         <span>Handcrafted in pure HTML &amp; CSS &bull; Zero frameworks</span>
