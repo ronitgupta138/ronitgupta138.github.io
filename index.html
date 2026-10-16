@@ -178,7 +178,10 @@
               <span class="dot green"></span>
             </div>
             <div class="bar-title">2D Geographic KD-Tree Partitioning Simulator</div>
-            <button class="reseed-chip" id="reseedBtn">🎲 Re-Seed</button>
+            <div style="display:flex; gap:6px;">
+              <button class="reseed-chip" id="resetTreeBtn" title="Reset to Indian Settlement Hubs">↺ Reset</button>
+              <button class="reseed-chip" id="reseedBtn" title="Randomize Settlements">🎲 Re-Seed</button>
+            </div>
           </div>
 
           <div class="kdtree-content">
@@ -204,7 +207,7 @@
             <canvas id="kdtreeCanvas" class="kdtree-canvas"></canvas>
             
             <div class="canvas-caption">
-              Visualizes the recursive nearest-neighbor KNN search with X-split (cyan) and Y-split (blue) plane pruning used in <strong>Bharat Spatial Engine</strong>.
+              Hover to benchmark nearest neighbor search &amp; subtree pruning (<span style="color:var(--emerald); font-weight:600;">&lt;0.02ms</span>). <strong>Click anywhere on canvas</strong> to dynamically insert a new settlement node and re-balance the tree.
             </div>
           </div>
         </div>
@@ -403,9 +406,17 @@
         <p class="section-desc">Production pull requests reviewed and merged into tier-one distributed runtimes, databases, and client drivers.</p>
       </div>
 
+      <!-- Category Filter Pills -->
+      <div class="oss-filter-bar">
+        <button class="oss-filter-chip active" data-filter="all">All Contributions (18)</button>
+        <button class="oss-filter-chip" data-filter="caching">Distributed Caching (7)</button>
+        <button class="oss-filter-chip" data-filter="storage">Databases &amp; Search (6)</button>
+        <button class="oss-filter-chip" data-filter="systems">Linux &amp; Infra (5)</button>
+      </div>
+
       <div class="oss-layout">
         <!-- Redisson Column -->
-        <div class="card spotlight-card oss-showcase-card">
+        <div class="card spotlight-card oss-showcase-card" data-category="caching">
           <div class="oss-card-top">
             <div class="oss-repo-badge">
               <span class="repo-badge-txt">redisson / redisson</span>
@@ -473,12 +484,12 @@
           </div>
         </div>
 
-        <!-- Redis & Distributed Systems Column -->
-        <div class="card spotlight-card oss-showcase-card">
+        <!-- Redis & Storage Engines Column -->
+        <div class="card spotlight-card oss-showcase-card" data-category="storage">
           <div class="oss-card-top">
             <div class="oss-repo-badge">
-              <span class="repo-badge-txt">Redis, Lettuce &amp; Distributed Engines</span>
-              <span class="repo-meta">Tier-1 Driver &amp; Storage Ecosystem</span>
+              <span class="repo-badge-txt">Redis, Lettuce &amp; Storage</span>
+              <span class="repo-meta">Tier-1 Driver &amp; Vector Infrastructure</span>
             </div>
             <span class="oss-status-tag open-tag">6 Active Contributions</span>
           </div>
@@ -530,6 +541,59 @@
                 <span class="oss-pr-title">Atomic alias collision rejection (#10944)</span>
               </div>
               <p class="oss-pr-sub">Enforced atomic alias validation to prevent routing corruption in vector collection namespaces.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Linux Desktop & Infrastructure Column -->
+        <div class="card spotlight-card oss-showcase-card" data-category="systems">
+          <div class="oss-card-top">
+            <div class="oss-repo-badge">
+              <span class="repo-badge-txt">Linux &amp; Cloud Infrastructure</span>
+              <span class="repo-meta">Compositor, Storage &amp; Kubernetes</span>
+            </div>
+            <span class="oss-status-tag open-tag">5 Active Contributions</span>
+          </div>
+
+          <div class="oss-items-list">
+            <div class="oss-item">
+              <div class="oss-item-head">
+                <a href="https://github.com/linuxmint/cinnamon/pull/14021" target="_blank" rel="noopener noreferrer" class="oss-pr-num open">cinnamon#14021</a>
+                <span class="oss-pr-title">Modal grab leak fix on window destruction</span>
+              </div>
+              <p class="oss-pr-sub">Resolved Cinnamon compositor modal pointer grab leak on ungraceful window destroy.</p>
+            </div>
+
+            <div class="oss-item">
+              <div class="oss-item-head">
+                <a href="https://github.com/linuxmint/nemo/pull/3859" target="_blank" rel="noopener noreferrer" class="oss-pr-num open">nemo#3859 &amp; #3860</a>
+                <span class="oss-pr-title">File manager view refresh &amp; selection edge cases</span>
+              </div>
+              <p class="oss-pr-sub">Corrected asynchronous directory view update race and multi-item selection state in Nemo.</p>
+            </div>
+
+            <div class="oss-item">
+              <div class="oss-item-head">
+                <a href="https://github.com/linuxmint/warpinator/pull/263" target="_blank" rel="noopener noreferrer" class="oss-pr-num open">warpinator#263</a>
+                <span class="oss-pr-title">Hardened network payload transfer validation</span>
+              </div>
+              <p class="oss-pr-sub">Added payload length sanitization and buffer overflow checks in local LAN transfer daemon.</p>
+            </div>
+
+            <div class="oss-item">
+              <div class="oss-item-head">
+                <a href="https://github.com/juju/juju/pull/23485" target="_blank" rel="noopener noreferrer" class="oss-pr-num open">juju#23485</a>
+                <span class="oss-pr-title">JSON tags &amp; base64 auth for dockerconfigjson</span>
+              </div>
+              <p class="oss-pr-sub">Added Kubernetes image pull secret serialisation support in Canonical Juju orchestration.</p>
+            </div>
+
+            <div class="oss-item">
+              <div class="oss-item-head">
+                <a href="https://github.com/lucide-icons/lucide/pull/4957" target="_blank" rel="noopener noreferrer" class="oss-pr-num open">lucide#4957</a>
+                <span class="oss-pr-title">Per-icon metadata exports in Svelte package</span>
+              </div>
+              <p class="oss-pr-sub">Exported icon nodes across individual icon modules to enable granular tree-shaking.</p>
             </div>
           </div>
         </div>

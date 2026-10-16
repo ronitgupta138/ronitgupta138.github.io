@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initTerminal();
   initKDTree();
+  initOSSFilter();
   initSpotlight();
   initCmdPalette();
   initCopyActions();
@@ -104,6 +105,10 @@ function initTerminal() {
   <span class="term-cyan">contact</span>       - Direct email and professional profiles
   <span class="term-cyan">clear</span>         - Clear the terminal screen`
   };
+
+  COMMANDS.projects = COMMANDS.flagships;
+  COMMANDS.architecture = COMMANDS.flagships;
+  COMMANDS.ls = `<span class="term-cyan">flagships/</span>  <span class="term-cyan">oss/</span>  <span class="term-white">workstation.config.sys</span>  <span class="term-emerald">benchmarks.log</span>`;
 
   const historyStack = [];
   let historyIdx = -1;
@@ -404,6 +409,34 @@ function initKDTree() {
     render();
   });
 
+  // Dynamic point insertion on click
+  canvas.addEventListener('click', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    
+    const newNode = {
+      name: `Custom Node #${nodes.length + 1}`,
+      mdds: `99${Math.floor(1000 + Math.random() * 9000)}`,
+      x: Math.max(0.05, Math.min(0.95, x)),
+      y: Math.max(0.05, Math.min(0.95, y))
+    };
+    
+    nodes.push(newNode);
+    kdTreeRoot = buildTree([...nodes]);
+    cursor = { x: newNode.x, y: newNode.y };
+    render();
+  });
+
+  const resetBtn = document.getElementById('resetTreeBtn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      nodes = [...SEED_NODES];
+      kdTreeRoot = buildTree([...nodes]);
+      render();
+    });
+  }
+
   if (reseedBtn) {
     reseedBtn.addEventListener('click', () => {
       nodes = SEED_NODES.map(p => ({
@@ -418,6 +451,30 @@ function initKDTree() {
 
   kdTreeRoot = buildTree([...nodes]);
   resize();
+}
+
+// 4. Upstream OSS Filter Engine
+function initOSSFilter() {
+  const chips = document.querySelectorAll('.oss-filter-chip');
+  const cards = document.querySelectorAll('.oss-showcase-card');
+  if (!chips.length || !cards.length) return;
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+
+      const filter = chip.getAttribute('data-filter');
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          card.classList.remove('filtered-out');
+        } else {
+          card.classList.add('filtered-out');
+        }
+      });
+    });
+  });
 }
 
 // 4. Hardware-Accelerated Spotlight Cards
