@@ -77,6 +77,7 @@ function initTerminal() {
 <span class="term-white">• Vectra Core:</span>           In-memory vector database with HNSW graph in Java 21 Loom
 <span class="term-white">• Bharat Spatial:</span>        2D KD-Tree geospatial hierarchy across 650k census nodes
 <span class="term-white">• FinFlow Core:</span>          Spring Boot 3.3.5 &amp; PostgreSQL 16 API [<a href="https://finflow-core.onrender.com" target="_blank" style="color:#10b981;">Live API ↗</a>]
+<span class="term-white">• Dine Luxe:</span>             Next.js 15 &amp; Redis Mutex restaurant OS [<a href="https://frontend-ten-phi-hzgzlmvvm9.vercel.app" target="_blank" style="color:#10b981;">Live App ↗</a>]
 <span class="term-dim">──────────────────────────────────────────────────────────────────</span>`,
 
     specs: `💻 <span class="term-cyan">WORKSTATION RIG SPECIFICATION</span>
