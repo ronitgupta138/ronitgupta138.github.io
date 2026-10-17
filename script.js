@@ -76,7 +76,7 @@ function initTerminal() {
 <span class="term-white">• burnrate:</span>              Terminal HUD &amp; budget circuit breakers in Rust (Crates.io)
 <span class="term-white">• Vectra Core:</span>           In-memory vector database with HNSW graph in Java 21 Loom
 <span class="term-white">• Bharat Spatial:</span>        2D KD-Tree geospatial hierarchy across 650k census nodes
-<span class="term-white">• FinFlow Core:</span>          Spring Boot 3.3.5 &amp; PostgreSQL 16 banking aggregation REST API
+<span class="term-white">• FinFlow Core:</span>          Spring Boot 3.3.5 &amp; PostgreSQL 16 API [<a href="https://finflow-core.onrender.com" target="_blank" style="color:#10b981;">Live API ↗</a>]
 <span class="term-dim">──────────────────────────────────────────────────────────────────</span>`,
 
     specs: `💻 <span class="term-cyan">WORKSTATION RIG SPECIFICATION</span>
