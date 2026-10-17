@@ -42,7 +42,7 @@ function initTerminal() {
 
   const COMMANDS = {
     whoami: `<span class="term-white">Ronit Gupta</span> — Systems &amp; Distributed Backend Software Engineer
-<span class="term-dim">• Education:</span> CSBS @ Netaji Subhash Engineering College, Kolkata (Batch 2027)
+<span class="term-dim">• Role:</span> Systems &amp; Distributed Backend Software Engineer
 <span class="term-dim">• Focus:</span> Concurrency (Java 21 Loom, Rust), In-Memory Indexes (HNSW, KD-Tree), Linux Internals
 <span class="term-green">✔ Status: Actively open for SDE-1 / Systems / Backend Engineering roles.</span>`,
 
@@ -194,7 +194,7 @@ function initKDTree() {
   const ctx = canvas.getContext('2d');
 
   const SEED_NODES = [
-    { name: "Kolkata (NSEC Hub)", mdds: "312011", x: 0.78, y: 0.52 },
+    { name: "Kolkata Hub", mdds: "312011", x: 0.78, y: 0.52 },
     { name: "Howrah District", mdds: "312015", x: 0.75, y: 0.55 },
     { name: "Bengaluru Tech Corridor", mdds: "512001", x: 0.44, y: 0.80 },
     { name: "Hyderabad Cyberabad", mdds: "411002", x: 0.49, y: 0.67 },
