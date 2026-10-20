@@ -596,10 +596,10 @@
           <div class="oss-items-list">
             <div class="oss-item">
               <div class="oss-item-head">
-                <a href="https://github.com/ratatui/ratatui/pull/2841" target="_blank" rel="noopener noreferrer" class="oss-pr-num open">ratatui#2841</a>
-                <span class="oss-pr-title">Clip List &amp; RatatuiLogo rendering to buffer bounds</span>
+                <a href="https://github.com/ratatui/ratatui/pull/2841" target="_blank" rel="noopener noreferrer" class="oss-pr-num open">ratatui#2841 &amp; #2850</a>
+                <span class="oss-pr-title">Buffer clipping &amp; set_stringn bounds protection (#2810)</span>
               </div>
-              <p class="oss-pr-sub">Prevents out-of-bounds panics by intersecting render areas with buffer bounds across List and RatatuiLogo.</p>
+              <p class="oss-pr-sub">Guarded Buffer::set_stringn against out-of-bounds coordinates and clipped List rendering on degenerate viewports.</p>
             </div>
 
             <div class="oss-item">
