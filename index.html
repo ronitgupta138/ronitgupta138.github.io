@@ -559,10 +559,10 @@
 
             <div class="oss-item">
               <div class="oss-item-head">
-                <a href="https://github.com/redis/lettuce/pull/3956" target="_blank" rel="noopener noreferrer" class="oss-pr-num open">lettuce#3956</a>
-                <span class="oss-pr-title">Bounded SharedLock exclusive spin (#3880)</span>
+                <a href="https://github.com/redis/lettuce/pull/3956" target="_blank" rel="noopener noreferrer" class="oss-pr-num open">lettuce#3956 &amp; #3963</a>
+                <span class="oss-pr-title">SharedLock spin (#3880) &amp; MultiOutput error tolerance (#3960)</span>
               </div>
-              <p class="oss-pr-sub">Hardware pause backoff with Java 8/9+ compatibility and 30s exclusive acquisition deadline.</p>
+              <p class="oss-pr-sub">Bounded spin backoff on lock acquisition and preserved per-element error tolerance inside MULTI/EXEC transactions.</p>
             </div>
 
             <div class="oss-item">
